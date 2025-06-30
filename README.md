@@ -17,7 +17,7 @@ Willkommen zur LoccoZ Organisation! Dieses Dokument dient der allgemeinen Einfü
 __Momentan__ befinden sich alle Elektronik und Software Projekte im offiziellen GitLab Server als separate Subgruppen (siehe Abbildung) unter dieser [GitLab Instanz](https://gitlab.com/loccoz-system-ag). In der Zukunft möchten wir jedoch diese GitLab Instanz auf dem firmeninternen Server laufen lassen ([Self-Hosting Gitlab-Server](https://about.gitlab.com/install/)).
 
 <div align="center">
-    <img src="hardware_architecture.svg" title="" />
+    <img src="gitlab_organisation.svg" title="" />
 </div>
 
 Diese vereinfachte Schematik soll die generelle Strukturierung der Projekten (=Repositories) repräsentieren. Der Owner kann über die Rollenverteilung alle Rechte und Zugriffe zu der Gruppe, Subgruppen und den Projekten separat bestimmen.
