@@ -204,6 +204,9 @@ Nebst dem Inhalt des Hardware-Projekts ist dessen Projekt-Gerüst von ähnlicher
     ├── subsheet1.kicad_sch
     └── subsheet2.kicad_sch
 ```
+
+</details>
+
 #### Legende 
 |Datei/Ordner|Beschreibung|
 |:-----------|:-----------|
