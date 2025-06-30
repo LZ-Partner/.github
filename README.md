@@ -173,8 +173,10 @@ Eine Versionierung von Hardware Projekten hat sich als schwieriger herausgestell
 
 ### Struktrurierung
 Nebst dem Inhalt des Hardware-Projekts ist dessen Projekt-Gerüst von ähnlicher, wenn nicht von grösserer Bedeutung. Eine standardisierte Working Directory ermöglicht es dem Team, ohne gross an die Organisation und Strukturierung zu denken, sofort mit der Erstellung des Projekts zu beginnen. Nebst dem sind wichtige Kicad-"Paths" vorkonfiguriert. Diese Paths sind automatisch generierte KiCad Makros. Diese ermöglichen dem KiCad Benutzer relative Pfade (Paths) zu bestimmen, was in KiCad äusserst nützlich ist. Diese Working Directory sieht beispielsweise wie folgt aus:
-${KIPRJMOD}/loccoz_sample_project:
-└── 📁if_line_controller
+<details>
+<summary>📁 kicad_muster_projekt</summary>
+
+```
     └── 📁documentation
         └── 📁application_notes
         └── 📁calculations
@@ -201,7 +203,7 @@ ${KIPRJMOD}/loccoz_sample_project:
     ├── README.md
     ├── subsheet1.kicad_sch
     └── subsheet2.kicad_sch
-
+```
 #### Legende 
 |Datei/Ordner|Beschreibung|
 |:-----------|:-----------|
