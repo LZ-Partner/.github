@@ -174,39 +174,33 @@ Eine Versionierung von Hardware Projekten hat sich als schwieriger herausgestell
 ### Struktrurierung
 Nebst dem Inhalt des Hardware-Projekts ist dessen Projekt-Gerüst von ähnlicher, wenn nicht von grösserer Bedeutung. Eine standardisierte Working Directory ermöglicht es dem Team, ohne gross an die Organisation und Strukturierung zu denken, sofort mit der Erstellung des Projekts zu beginnen. Nebst dem sind wichtige Kicad-"Paths" vorkonfiguriert. Diese Paths sind automatisch generierte KiCad Makros. Diese ermöglichen dem KiCad Benutzer relative Pfade (Paths) zu bestimmen, was in KiCad äusserst nützlich ist. Diese Working Directory sieht beispielsweise wie folgt aus:
 ${KIPRJMOD}/loccoz_sample_project:
-│   .gitignore
-│   .gitmodules
-│   .gitattributes
-│   fp-info-cache
-│   fp-lib-table
-│   sym-lib-table
-│   _autosave-can_bus_driver.kicad_sch
-│   loccoz_sample_project.kicad_pcb
-│   loccoz_sample_project.kicad_prl
-│   loccoz_sample_project.kicad_pro
-│   loccoz_sample_project.kicad_sch
-│   loccoz_sample_project.kicad_sch-bak
-│   subsheet1.kicad_sch
-│   subsheet2.kicad_sch
-│   subsheet3.kicad_sch
-│
-├───documentation
-│
-├───loccoz_sample_project-backups
-│
-├───kicad_loccoz_lib
-│   │   .gitattributes
-│   │   README.md
-│   │
-│   ├───3d_models
-│   │
-│   ├───footprints
-│   │
-│   └───symbols
-│
-├───images
-│
-└───manufacturing
+└── 📁if_line_controller
+    └── 📁documentation
+        └── 📁application_notes
+        └── 📁calculations
+        └── 📁data_sheets
+        ├── if_line_controller-2025-06-30_213159.zip
+    └── 📁kicad_loccoz_lib
+        └── 📁3d_models
+        └── 📁footprints
+            └── 📁lz_tvs_diodes
+        └── 📁images
+        └── 📁symbols
+        ├── .gitattributes
+        ├── README.md
+    └── 📁manufacturing
+        └── 📁assembly
+        └── 📁fabrication
+    ├── .gitattributes
+    ├── .gitignore
+    ├── .gitmodules
+    ├── if_line_controller.kicad_pcb
+    ├── if_line_controller.kicad_prl
+    ├── if_line_controller.kicad_pro
+    ├── if_line_controller.kicad_sch
+    ├── README.md
+    ├── subsheet1.kicad_sch
+    └── subsheet2.kicad_sch
 
 #### Legende 
 |Datei/Ordner|Beschreibung|
