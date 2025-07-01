@@ -1,4 +1,5 @@
 - [LoccoZ AG Version Control System](#loccoz-ag-version-control-system)
+  - [Organisation und Regeln](#organisation-und-regeln)
   - [SSH-Key](#ssh-key)
     - [Funktionsweise der SSH-Key-Authentifizierung](#funktionsweise-der-ssh-key-authentifizierung)
   - [Guide wie man SSH-Key auf Windows 11 einrichtet und in Gitlab hinterlegt](#guide-wie-man-ssh-key-auf-windows-11-einrichtet-und-in-gitlab-hinterlegt)
@@ -21,6 +22,12 @@ __Momentan__ befinden sich alle Elektronik und Software Projekte im offiziellen 
 </div>
 
 Diese vereinfachte Schematik soll die generelle Strukturierung der Projekten (=Repositories) repräsentieren. Der Owner kann über die Rollenverteilung alle Rechte und Zugriffe zu der Gruppe, Subgruppen und den Projekten separat bestimmen.
+
+## Organisation und Regeln
+Für die detaillierte Erklärung der Rollen weise ich auf die [GitLab Dokumentation](https://docs.gitlab.com/user/permissions/) hin. Im Moment bin ich (Masiar Etemadi), der einzige, der aktiv zur Hardware- und Software Entwicklung beiträgt. Deswegen sind die Regeln für das Arbeiten so festgelegt: 
+
+- Owner Groups und Subgroups = Masiar Etemadi
+- Protection = Main branch ist so geschützt, dass nur der Owner Veränderungen im Repo pushen kann. Die anderen Personen können im Moment nur in eigens erschaffene Branches ihre Veränderungen pushen.
 
 ## SSH-Key
 SSH-Keys (Secure Shell Keys) sind ein kryptografisches Schlüsselpaar, das zur sicheren Authentifizierung zwischen einem Client (z. B. deinem PC) und einem Server (z. B. GitLab, GitHub oder einem Remote-Server) verwendet wird.
