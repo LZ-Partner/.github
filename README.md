@@ -6,9 +6,6 @@
   - [Git in Powershell Aufsetzen](#git-in-powershell-aufsetzen)
   - [Commit Regeln und Konventionen](#commit-regeln-und-konventionen)
   - [Troubleshooting](#troubleshooting)
-  - [Hardware Version Control System](#hardware-version-control-system)
-    - [Struktrurierung](#struktrurierung)
-      - [Legende](#legende)
 
 __DIESES DOKUMENT BEFINDET SICH NOCH IN DER ENTWICKLUNG__. 
 Willkommen zur LoccoZ Organisation! Dieses Dokument dient der allgemeinen Einführung in das Version Controlling von Hardware und Software Projekten von Loccoz AG. Nebst dieser Einführung werden auch andere organisatorische Punkte angesprochen.
@@ -175,58 +172,3 @@ __Bitte alle Probleme, die du bei der Installation erhältst, bitte hier einfüg
 2. Problem 2
 3. ...
 
-## Hardware Version Control System
-Eine Versionierung von Hardware Projekten hat sich als schwieriger herausgestellt als ich gedacht habe. Nichtsdestotrotz funktioniert die strikte Versionierung mit Git einwandfrei. Das einzige was momentan fehlt ist eine Visualisierung der Schematics und/oder PC Boards, auf deren man die Veränderungen zwischen dem einem alten und neuen Commit vergleichen kann. Eine mögliche Lösung für dieses Problem könnten die kostengünstige Software-Applikation CadLab.io sein.
-
-### Struktrurierung
-Nebst dem Inhalt des Hardware-Projekts ist dessen Projekt-Gerüst von ähnlicher, wenn nicht von grösserer Bedeutung. Eine standardisierte Working Directory ermöglicht es dem Team, ohne gross an die Organisation und Strukturierung zu denken, sofort mit der Erstellung des Projekts zu beginnen. Nebst dem sind wichtige Kicad-"Paths" vorkonfiguriert. Diese Paths sind automatisch generierte KiCad Makros. Diese ermöglichen dem KiCad Benutzer relative Pfade (Paths) zu bestimmen, was in KiCad äusserst nützlich ist. Diese Working Directory sieht beispielsweise wie folgt aus:
-<details>
-<summary>📁 kicad_muster_projekt</summary>
-
-```
-    └── 📁documentation
-        └── 📁application_notes
-        └── 📁calculations
-        └── 📁data_sheets
-        ├── if_line_controller-2025-06-30_213159.zip
-    └── 📁kicad_loccoz_lib
-        └── 📁3d_models
-        └── 📁footprints
-            └── 📁lz_tvs_diodes
-        └── 📁images
-        └── 📁symbols
-        ├── .gitattributes
-        ├── README.md
-    └── 📁manufacturing
-        └── 📁assembly
-        └── 📁fabrication
-    ├── .gitattributes
-    ├── .gitignore
-    ├── .gitmodules
-    ├── if_line_controller.kicad_pcb
-    ├── if_line_controller.kicad_prl
-    ├── if_line_controller.kicad_pro
-    ├── if_line_controller.kicad_sch
-    ├── README.md
-    ├── subsheet1.kicad_sch
-    └── subsheet2.kicad_sch
-```
-
-</details>
-
-#### Legende 
-|Datei/Ordner|Beschreibung|
-|:-----------|:-----------|
-|documentation| Ordner für das Ablegen, von jeglichen Datenblätter, Applikationsnotizen, Berechnungen und Systembeschreibungen. In jedem "documentation" Ordners eines Projekts sollte ein PDF Dokument hinterlegt sein, wo kurz das Projekt beschrieben und eine Skizze vom System hinterlegt ist. Eine Systemskizze kann entweder mit einem Software-Tool, wie z.B [Draw.io](https://www.drawio.com/) oder auch mit dem LaTex-Package, tikz, gezeichnet werden.|
-|*_project-backups|Ein von KiCad automatisch generierter Ordner, wo alte Versionen gespeichert werden. Nützlich für eine manuelle Visualieriung der Veränderungen des Projekts.|
-|images|Selbsterklärender Ordner. Hier werden die Fotos vom Board in 3D, Firmen- und sonstige zusätzliche Logos, etc. abgespeichert.|
-|manufacturing|In diesem Ordner befinden sich alle wichtigen Dateien, die die externe Fabrikationsstelle gebraucht (Gerber Dateien, Bills-Of-Materials Liste, etc.), um das Board zu drucken und die elektronische Komponenten zu platzieren.|
-|kicad_loccoz_lib|Beinhaltet alle von LoccoZ gezeichnete und konfigurierte, elektronische Komponenten, die nicht im offiziellem KiCad-Bibliothek existieren. Ein kleiner Nachteil bei meinem Lösungsansatz ist, dass bei jedem neuen Projekt, die Footrpint-Unterordner in /kicad_loccoz_lib/footprints manuell hinzugefügt werden müsseen: (Im Projekt-Fenster) >Preferences>Manage Footrpint Libraries>Project Specific Libraries>Add Existing (Ordner-Icon). Dieser Ordner ist aus der Git Perspektive speziell, da dieser von Git als [Git Submodule](https://git-scm.com/book/de/v2/Git-Tools-Submodule) verstanden wird. Der Vorteil von so einem Submodule ist, dass dieser Ordner eine separate Versionierung hat. Dies ermöglicht eine zentrale und projektunabhängige Zusammenarbeit. Wenn z.B Person A in Projekt X eine neue STEP Datei hinzugefügt hat, diese Veränderung commited (`git commit`) und in den Remote Repository pushed (`git push origin <branch>`), hat die Person B in Projekt Y nach einem Submodule update (`git submodule update --remote`) Zugriff auf diese STEP Datei. __!WICHTIG!__ Um eine möglichst lineare und saubere Commit Historie (`git log --graph --oneline`) zu haben, ist es vonnöten immer zuerste `git submodule update --remote` durchzuführen, bevor man eigene Veränderungen in seinem Submodule durchführt.|
-|3d_models|Ordner für alles .step, .stp Dateien von elektronischen Komponenten|
-|symbols|Ordner für das Ablegen von .kicad_sym Dateien. Diese Dateien besitzen die Symbole von elektronische Komponenten. Diese Symbole werden in der .kicad_sch Datei eingesetzt.|
-|footprints|Ordner für den physischen Platinenabdruck von elekronischen Komponenten. Jedes Symbol in einem Projekt wird über KiCad mit einem Footprint verknüpft, welche dann in der .kicad_pcb Datei eingesetzt wird.|
-|.kicad_sch|Schematics Editor Datei. Hier werden alle elektrischen Regeln und Verbindungen festgelegt.|
-|.kicad_pcb|PCB Editor Datei. Das ECAD, wo das physiche Layout und Traces des PC Boards gezeichnet werden. Nebst dem bietet KiCad im PCB Editor ein dynamischen 3D-Viewer an.|
-|.gitignore|Eine Git-spezifische Datei, in welchem für Git definiert wird, welche Dateien es bei der Versionierung ignorieren soll.|
-|.gitmodules|In dieser Git-spezifischen Datei, werden die Regeln für die Submodule festgelegt.|
-|.gitattributes|Git ist auf die Versionierung von textbasierten Dateien ausgelegt (Jegliche Quellcodes, welche mit einem Text-Editor bearbeitet werden können). Da aber im Working-Directory nicht alle Dateien textbasiert sondern auch binäre Dateien zu finden sind (.pdf, .xlxs, .csv, .step, .png, etc.). Da wir auch die Veränderungen in diesem Dateien tracken möchten, benutze ich die Git Extension, [Git Large File Storage](https://git-lfs.com/). In .gitattributes werden somit die Regeln von zusätzlichen Git-Extension festgelegt.|
