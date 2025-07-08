@@ -45,7 +45,7 @@ Ein SSH-Key besteht aus zwei Teilen:
 
 ## Guide wie man SSH-Key auf Windows 11 einrichtet und in Gitlab hinterlegt
 
-1. Öffne die Eingabeaufforderung (CMD) oder Windows Terminal (als Administrator). 
+1. Öffne __Windows Terminal__ (nicht als Admin)
 2. Prüfen, ob SSH installiert ist
      ```powershell
      ssh -V
@@ -60,7 +60,7 @@ Ein SSH-Key besteht aus zwei Teilen:
      ```
 4. Generiere einen neuen SSH-Key mit (Falls kein/neuer SSH-Key benötigt wird):
      ```powershell
-     ssh-keygen -t ed25519 -C "deine-email@example.com" -f ~/.ssh/gitlab_key
+     ssh-keygen -t ed25519 -C "deine-email@example.com" -f C:\Users\$YOURUSERNAME$\.ssh\gitlab_key
      ```
      Ersetze deine-email@example.com mit deiner E-Mail-Adresse. Bestätige den Standardpfad `~\.ssh\id_ed25519` mit __Enter__. Beim Anfragen des Passphrases einfach nochmal __Enter__ drücke. Danach noch einmal __Enter__ drücken.
 
@@ -79,7 +79,7 @@ Ein SSH-Key besteht aus zwei Teilen:
 6. SSH-Key in Gitlab hinterlegen
    1. Öffentlichen Key kopieren:
         ```powershell
-        cat ~/.ssh/id_ed25519.pub  # oder cat ~/.ssh/gitlab_key.pub
+        cat ~/.ssh/gitlab_key.pub
         ```
         Gesamten Output des Command-Lines kopieren. 
    2. Key in GitLab einfügen: 
@@ -124,6 +124,7 @@ __Bitte alte Keys, `id_rsa`, durch einen modernen Ed25519-Key ersetzen (siehe Sc
 Source: [Use SSH keys to communicate with GitLab](https://docs.gitlab.com/user/ssh/)
 
 ## Git in Powershell Aufsetzen
+Falls du ein Youtube-Tutorial bevorzugst, schau dir bitte [dieses Tutorial](https://www.youtube.com/watch?v=TwKyqOf5mJ4) an. 
 
 1. Git herunterladen
    - Gehe zur offiziellen [Git-Website](https://git-scm.com/downloads/win)
@@ -131,9 +132,12 @@ Source: [Use SSH keys to communicate with GitLab](https://docs.gitlab.com/user/s
 2. Installer ausführen
    - Doppelklicke auf die heruntergeladene .exe-Datei
    - Folge den Installationsanweisungen (die Standardoptionen sind in der Regel in Ordnung)
-3. Wichtige Optionen während der Installation
-   - Wähle "Git from the command line and also from 3rd-party software" (dies integriert Git in PowerShell)
-   - Wähle "Use Windows' default console window"
+3. Wichtige Optionen während der Installation (FALLS DIESE BEI DER INSTALLATION ANGEZEIGT WERDEN)
+   - Obwohl davon abgeraten wird, empfehle ich dir trotzdem [Vim](https://www.vim.org/) als Text-Editor für Commit-Messages.
+   - Wähle in __Adjusting the name of the initial branch in the new repositories__ die Option __Override the default branch name for new repositories__ (Der Default Branch Name wird dann __main__ heissen).
+   - Wähle __Git from the command line and also from 3rd-party software__ (dies integriert Git in PowerShell)
+   - Wähle __Use Windows' default console window__
+   - Wähle __Use bundled OpenSSH__
    - Aktiviere "Enable file system caching" und "Enable Git Credential Manager"
 4. Installation überprüfen
    - Öffne Powershell (als Admin oder normal)
