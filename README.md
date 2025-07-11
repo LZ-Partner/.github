@@ -54,28 +54,32 @@ Ein SSH-Key besteht aus zwei Teilen:
      ```powershell
      Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
      ```
-3. (Falls bereits einer existiert) Vorhandener SSH-Key verwernden
+3. Überprüfe, ob du ein Ordner namens .ssh hast und ob dort schon ein SSH Schlüssel vorhanden ist.
      ```powershell
-     ls ~/.ssh/
+     ls C:\Users\$USERNAME$\.ssh\
      ```
-4. Generiere einen neuen SSH-Key mit (Falls kein/neuer SSH-Key benötigt wird):
+4. Falls schon ein Schlüssel existiert und du mit diesem Schlüssel dich anmelden willst, springe zum Punkt x. Falls nicht, generiere einen neuen SSH-Key:
      ```powershell
-     ssh-keygen -t ed25519 -C "deine-email@example.com" -f C:\Users\$YOURUSERNAME$\.ssh\gitlab_key
+     ssh-keygen -o -t rsa -C "deine-email@example.com" 
      ```
-     Ersetze deine-email@example.com mit deiner E-Mail-Adresse. Bestätige den Standardpfad `~\.ssh\id_ed25519` mit __Enter__. Beim Anfragen des Passphrases einfach nochmal __Enter__ drücke. Danach noch einmal __Enter__ drücken.
-
-5. Starte den SSH-Agent:
+     Beim Anfragen des Passphrases einfach nochmal __Enter__ drücke. Danach noch einmal __Enter__ drücken.
+5. Überprüfe den Status des SSH-Agententen
      ```powershell
-     Start-Service ssh-agent
+     Get-Service ssh-agent 
      ```
-     Füge den Key hinzu:
+     Falls der Output so ausschaut:
      ```powershell
-     ssh-add ~/.ssh/gitlab_key
+     Status   Name               DisplayName
+     ------   ----               -----------
+     Stopped  ssh-agent          OpenSSH Authentication Agent
      ```
-     Geladene Keys überprüfen:
+     Ist der SSH-Agent entweder ganz gestoppt oder in "Automatic"-Mode. Für erstmalige Benutzer von SSH-Schlüssel ist dieser Schritt     vorzunehmen:
      ```powershell
-     ssh-add -l
+     > Set-Service ssh-agent -StartupType Automatic
+     > Start-Service ssh-agent
+     > Get-Service ssh-agent
      ```
+     Der letzte Befehl sollte im Status Segment __Running__ signalisieren. Falls nicht bitte dein Error/Problem im Troubleshooting S     Segment schildern.
 6. SSH-Key in Gitlab hinterlegen
    1. Öffentlichen Key kopieren:
         ```powershell
@@ -86,7 +90,7 @@ Ein SSH-Key besteht aus zwei Teilen:
       1. Gehe zu deinem [Gitlab-Account](https://gitlab.com/)->Auf deinem Profil Icon klicken->[Preferences](https://gitlab.com/-/profile/preferences)->[SSH-Keys](https://gitlab.com/-/user_settings/ssh_keys).
       2. Füge den Key, den du kopiert hast, ein und vergeb ihm einen Titel (z.B. "Windwos 11 SSH-Key Loccoz System AG).
       3. Klicke auf __Add key__.
-7. Verbindung testen
+8. Verbindung testen
     ```powershell
     ssh -T git@gitlab.com
     ```
@@ -99,8 +103,7 @@ Ein SSH-Key besteht aus zwei Teilen:
     ```
 8. (Optional) Mehrere SSH-Keys verwalten
    Falls du verschiedene Keys für GitLab, GitHub, etc. nutzt:
-   1. `~/.ssh/config` erstellen/bearbeiten:
-        `notepad ~/.ssh/config`
+   1. Erstelle eine .txt Datei namens __config__ (Pfad = C:\Users\$USERNAME$\.ssh\config.txt)
    2. Key-Zuordnung definieren (Beispiel, letze Zeile mit {data-source-line="108"} __ignorieren__)
         ```
         # GitLab Host gitlab.com
@@ -119,8 +122,6 @@ Ein SSH-Key besteht aus zwei Teilen:
 
     3. Verbindung testen `ssh -T git@gitlab.com  # Test für GitLab`
 
-__Bitte alte Keys, `id_rsa`, durch einen modernen Ed25519-Key ersetzen (siehe Schritt 3)__
-
 Source: [Use SSH keys to communicate with GitLab](https://docs.gitlab.com/user/ssh/)
 
 ## Git in Powershell Aufsetzen
@@ -135,33 +136,43 @@ Falls du ein Youtube-Tutorial bevorzugst, schau dir bitte [dieses Tutorial](http
 3. Wichtige Optionen während der Installation (FALLS DIESE BEI DER INSTALLATION ANGEZEIGT WERDEN)
    - Obwohl davon abgeraten wird, empfehle ich dir trotzdem [Vim](https://www.vim.org/) als Text-Editor für Commit-Messages.
    - Wähle in __Adjusting the name of the initial branch in the new repositories__ die Option __Override the default branch name for new repositories__ (Der Default Branch Name wird dann __main__ heissen).
-   - Wähle __Git from the command line and also from 3rd-party software__ (dies integriert Git in PowerShell)
+   - Wähle __Git from the command line and also from 3rd-party software__
    - Wähle __Use Windows' default console window__
    - Wähle __Use bundled OpenSSH__
-   - Aktiviere "Enable file system caching" und "Enable Git Credential Manager"
+   - Aktiviere __Enable file system caching__ und __Enable Git Credential Manager__
 4. Installation überprüfen
-   - Öffne Powershell (als Admin oder normal)
+   - Öffne __Windows Terminal__ 
    - Führe folgenden Befehl aus:
     ```powershell
-    git --version
+    > git --version
     ```
     Du solltest die installierte Git-Version sehen (z.B `git version 2.40.1`)
 5. Git konfigurieren
    - Benutzerinformationen einrichten (erforderlich für Commits). Für user name gibt es für LoccoZ eine Konvention. Beispiel mit Masiar Etemadi:
    ```powershell
-    git config --global user.name "maet-loccoz" # Die ersten zwei Buchstaben des Vor- und Nachnamens kombinieren
-    git config --global user.email "masiar@etemadi.com"
+    > git config --global user.name "maet-loccoz" # Die ersten zwei Buchstaben des Vor- und Nachnamens kombinieren
+    > git config --global user.email "masiar@etemadi.com"
    ```
    - Falls man seine Konfigurationen überprüfen möchte:
     ```powershell
-    git config --list
+    > git config --list
     ```
+6. Bevor du endlich mit dem Klonen von Repos startest lohnt es sich noch dein Git im Terminal zu verbessern:
+    ```powershell
+    > Import-Module posh-git> Install-Module posh-git -Scope CurrentUser -Force
+    > Import-Module posh-git
+    > Add-PoshGitToProfile -AllHosts
+    ```
+    Nun solltest du nützliche Extensions, die dir signalisieren, was commited und pushed werden kann und was noch untracked ist:
+    ```powershell
+    C:\Users\Masiar.Etemadi\dev\loccoz-organization [main ≡ +1 ~1 -0 !]>
+    ```    
 6. LoccoZ-Organisation Repository klonen
     ```powershell
     C:\Users\$USERNAME$> cd ~/path/to/desired/destination
     C:\Users\$USERNAME$> git clone git@gitlab.com:loccoz-system-ag/loccoz-organization.git
     ```
-    Nun hast du den Remote Repository lokal auf dein Rechner. Hier ist nun ein guter Punkt sich aktiv mit Git auseinanderzusetzen. Ich weise auf das OneNote von I0045-I-SYSTEM hin, wo unter dem Abschnitt "Git" verschiedenste Tutorials zu Git aufgelistet sind. Nebst den Tutorials findest du auch Cheatsheets und offizielle Dokumenationen zu Git.
+    Nun hast du dieses readme-Dokument lokal auf deinem Rechner. Hier ist nun ein guter Punkt sich aktiv mit Git auseinanderzusetzen. Ich weise auf das OneNote von I0045-I-SYSTEM hin, wo unter dem Abschnitt "Git" verschiedenste Tutorials zu Git aufgelistet sind. Nebst den Tutorials findest du auch Cheatsheets und offizielle Dokumenationen zu Git.
 
 ## Commit Regeln und Konventionen
 Für Software-Entwicklungen empfehle ich stark sich an diese [Commit-Konvention](https://www.conventionalcommits.org/en/v1.0.0/) zu halten. Dies standardisiert die Commit-Historie, macht es für andere Mitarbeiter einfacher den Verlauf des Codes zu verstehen und mögliche Bugs schneller zu erkennen.
