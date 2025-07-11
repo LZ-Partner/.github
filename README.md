@@ -48,11 +48,11 @@ Ein SSH-Key besteht aus zwei Teilen:
 1. Öffne __Windows Terminal__ (nicht als Admin)
 2. Prüfen, ob SSH installiert ist
      ```powershell
-     ssh -V
+     > ssh -V
      ```
     Falls SSH nicht installiert ist, installiere es über:
      ```powershell
-     Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+     > Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
      ```
 3. Überprüfe, ob du ein Ordner namens .ssh hast und ob dort schon ein SSH Schlüssel vorhanden ist.
      ```powershell
@@ -60,12 +60,12 @@ Ein SSH-Key besteht aus zwei Teilen:
      ```
 4. Falls schon ein Schlüssel existiert und du mit diesem Schlüssel dich anmelden willst, springe zum Punkt x. Falls nicht, generiere einen neuen SSH-Key:
      ```powershell
-     ssh-keygen -o -t rsa -C "deine-email@example.com" 
+     > ssh-keygen -o -t rsa -C "deine-email@example.com" 
      ```
      Beim Anfragen des Passphrases einfach nochmal __Enter__ drücke. Danach noch einmal __Enter__ drücken.
 5. Überprüfe den Status des SSH-Agententen
      ```powershell
-     Get-Service ssh-agent 
+     > Get-Service ssh-agent 
      ```
      Falls der Output so ausschaut:
      ```powershell
@@ -79,11 +79,11 @@ Ein SSH-Key besteht aus zwei Teilen:
      > Start-Service ssh-agent
      > Get-Service ssh-agent
      ```
-     Der letzte Befehl sollte im Status Segment __Running__ signalisieren. Falls nicht bitte dein Error/Problem im Troubleshooting S     Segment schildern.
+     Der letzte Befehl sollte im Status Segment __Running__ signalisieren. Falls nicht bitte dein Error/Problem im Troubleshooting Segment schildern.
 6. SSH-Key in Gitlab hinterlegen
    1. Öffentlichen Key kopieren:
         ```powershell
-        cat ~/.ssh/gitlab_key.pub
+        > cat C:\Users\$USERNAME$\.ssh\id_rsa.pub
         ```
         Gesamten Output des Command-Lines kopieren. 
    2. Key in GitLab einfügen: 
@@ -92,11 +92,11 @@ Ein SSH-Key besteht aus zwei Teilen:
       3. Klicke auf __Add key__.
 8. Verbindung testen
     ```powershell
-    ssh -T git@gitlab.com
+    > ssh -T git@gitlab.com
     ```
     Falls keine Erfolgsmeldung:
         - Error kopieren
-        - Unter [Troubleshooting](#trouble) einfügen
+        - Unter [Troubleshooting](#trouble) einfügen und Problem erläutern.
     Erfolgsmeldung:
     ```powershell
     Welcome to GitLab, @DeinUsername!
@@ -167,12 +167,12 @@ Falls du ein Youtube-Tutorial bevorzugst, schau dir bitte [dieses Tutorial](http
     ```powershell
     C:\Users\Masiar.Etemadi\dev\loccoz-organization [main ≡ +1 ~1 -0 !]>
     ```    
-6. LoccoZ-Organisation Repository klonen
+6. Als Test kannst du die LoccoZ-Organisation Repository (gitlab-profile) klonen:
     ```powershell
-    C:\Users\$USERNAME$> cd ~/path/to/desired/destination
-    C:\Users\$USERNAME$> git clone git@gitlab.com:loccoz-system-ag/loccoz-organization.git
+    > cd C:\Users\$USERNAME$\path\to\desired\destination
+    > git clone git@gitlab.com:loccoz-system-ag/loccoz-organization.git
     ```
-    Nun hast du dieses readme-Dokument lokal auf deinem Rechner. Hier ist nun ein guter Punkt sich aktiv mit Git auseinanderzusetzen. Ich weise auf das OneNote von I0045-I-SYSTEM hin, wo unter dem Abschnitt "Git" verschiedenste Tutorials zu Git aufgelistet sind. Nebst den Tutorials findest du auch Cheatsheets und offizielle Dokumenationen zu Git.
+    Nun hast du dieses readme-Dokument lokal auf deinem Rechner! Hier ist nun ein guter Punkt sich aktiv mit Git auseinanderzusetzen. Ich weise auf das OneNote von I0045-I-SYSTEM hin, wo unter dem Abschnitt "Git" verschiedenste Tutorials zu Git aufgelistet sind. Nebst den Tutorials findest du auch Cheatsheets und offizielle Dokumenationen zu Git.
 
 ## Commit Regeln und Konventionen
 Für Software-Entwicklungen empfehle ich stark sich an diese [Commit-Konvention](https://www.conventionalcommits.org/en/v1.0.0/) zu halten. Dies standardisiert die Commit-Historie, macht es für andere Mitarbeiter einfacher den Verlauf des Codes zu verstehen und mögliche Bugs schneller zu erkennen.
@@ -183,7 +183,14 @@ Man versucht bei gewisssen, schwierigen Spielen, falls diese Option besteht, in 
 
 ## Troubleshooting
 __Bitte alle Probleme, die du bei der Installation erhältst, bitte hier einfügen.__ 
-1. Problem 1
-2. Problem 2
-3. ...
+1. Erstellung SSH-Schlüssel für Miguel und Timo: 
+   1. SSH-Schlüssel Generierung mit ID_ED25519 Protokoll
+   2. Schlüssel wurde umbenannt zu __gitlab_key__ via Command Line Attribut "-f" (statt id_ed25519.pub -> gitlab_key.pub)
+   3. Schlüssel konnte erfolgreich generiert werden und sich mit dem offiziellen Gitlab-Server verbinden.
+   4. __Problem__: Wenn man ein Repo von der Loccoz-System-AG Group klonen wollte, kam dieser Error:
+        ```
+        Could not access remote. Permission denied (publickey)
+        fatal: could not reach repository
+        ```
+2. ...
 
