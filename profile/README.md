@@ -99,6 +99,26 @@ Configure your global Git identity (required for commits):
 
 ---
 
+## Setup STM32 for developing
+
+We setup VSCode for STM32 development.
+
+1. Install VSCode using the following link [VSCode download](https://code.visualstudio.com/download)
+2. Install the STM32 as well as Serial Monitor extension from the official Microsoft Marketplace
+
+Besides your IDE you need additional external dependencies to start developing. We recommend creating an ST account to download the required software.
+
+- [CubeClt](https://www.st.com/en/development-tools/stm32cubeclt.html) is a bundle of toolchain components. During installation **please do not change the installation location**.
+- [CubeMX](https://www.st.com/en/development-tools/stm32cubeclt.html) is a graphical project configurator. As well **do not change the installation location**.
+- [MCUFinder](https://www.st.com/en/development-tools/st-mcu-finder-pc.html) is a graphical tool to select an ST device. Again **do not change the installation location**.
+
+After STMTool installation you can find following VSCode extensions using those Extension Ids in the serach box of your extension manager.
+
+- STMicroelectronics.stm32-vscode-extension
+- ms-vscode.vscode-serial-monitor
+
+---
+
 ## Commit Regeln und Konventionen 
 https://www.conventionalcommits.org/en/v1.0.0/
 Another recommendation for commits is to record commit messages at shorter intervals and after minor changes, rather than recording one commit message after many changes. You can think of this in the same way as progressing in a game:
