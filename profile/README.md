@@ -117,6 +117,36 @@ After STMTool installation you can find following VSCode extensions using those 
 - STMicroelectronics.stm32-vscode-extension
 - ms-vscode.vscode-serial-monitor
 
+After you've done everything it should look like that
+
+<img src="images/stmExtensionPanel.png" alt="Extension Tab" width="25%">
+
+Check if everything works by clicking through the extension panel, if everything launchs you're fine else you have to debug
+
+Check if **ST-LINK firwmare upgrades are required**: This is the case if the debugger on the development board is to old. You'll find it out if following error messages pup up
+
+```console
+Could not find the task 'Build'
+```
+
+or
+
+```console
+Unable to start debugging
+```
+
+To upgrade the firmware do the following:
+- Plug in your board
+- In VSCode, open the STM32 extension tab
+- Select "Upgrade ST-Link firmware"
+- Wait for updates to complete
+
+If it still wont work enter the following command
+
+```console
+stlinkupgrade
+```
+
 ---
 
 ## Commit Regeln und Konventionen 
