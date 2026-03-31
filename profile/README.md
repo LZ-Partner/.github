@@ -282,4 +282,7 @@ __Please list any problems you encounter during installation here.__
         fatal: could not reach repository
         ```
 
-
+2. Setting up and building STM32 Project:
+    1. Check if all STM32 tools are installed
+    2. Don't build it on **OneDrive**
+    3. cd directly in the project i.e. if you named your project Test cd directly into the project and after you're in the folder open visual studio code to compile
