@@ -156,6 +156,18 @@ stlinkupgrade
   3. Place the downloaded ```ninja.exe``` into the folder ```C:\Program Files\ninja```
   4. Add the ```C:\Program Files\ninja``` to your system path.
   5. Close and re-open VSCode
+
+---
+
+## LaTeX setup in VSCode
+
+To setup LaTeX for windows one needs to have TeX Live on Windows to install that use the following link and select a method to install it [TexLive Download](https://tug.org/texlive/windows.html). The installation may take some time depending on your laptop up tho 3h.
+
+In VSCode i recommend following extension from the extension manager with the following Extension-id:
+- James-Yu.latex-workshop
+
+After you've setup all this you are able to compile latex documents as well as makrown documents using the Keybind ```Ctrl + Shift + v```
+
 ---
 
 ## Commit Regeln und Konventionen 
