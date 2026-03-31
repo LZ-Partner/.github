@@ -228,6 +228,14 @@ The latest versions of ubuntu do not contain libncurses5 in their repositories a
 
 ### Build STM32 Project
 
+Start STM32CubeMX select New Project either select start project from MCU or Start My Project from ST Board. After you've selected the board navigate to ```Project Manager``` and at the point wehre you have to select the ```Toolchain / IDE``` select CMake and the default ```Compiler/Linker``` GCC. Then Generate Code.
+
+**Important the project name has to be the same name as the toolchain location folder**
+
+After your code is generated please open it with Visual studiocode if you want to compile it you have to generate a build file, after that you can flash your MCU.
+
+If you open the folder wehre it is stored you have many popus in the bottom right corner please select initialze board and rund debug cmake project. Also in the debug section give create a stm launch.json file before you can start. Important always select STM32 STLink GDB Server and build the project before you release it.
+
 
 ---
 
