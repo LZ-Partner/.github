@@ -45,6 +45,18 @@ Access to repositories is done via **SSH keys**.
   https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
 
 
+### Simplest way to setup SSH-Key works on Windows & Linux
+
+Open your terminal/comandline enter the following command
+```
+ssh-keygen
+```
+
+Get your ssh key from the following path: ```C:\Users\**YOURUSERNAME**\.ssh\id_ed25519.pub``` (Windows)
+
+Get your ssh key from the following path: ```/homw/**YOURUSERNAME**/.shh/id_ed25519.pub``` (Linux)
+
+
 ### Optional: multiple SSH keys
 If you use multiple Git platforms or keys, configure `~/.ssh/config` per key like this:
 
@@ -108,20 +120,23 @@ We setup VSCode for STM32 development.
 
 Besides your IDE you need additional external dependencies to start developing. We recommend creating an ST account to download the required software.
 
-- [CubeClt](https://www.st.com/en/development-tools/stm32cubeclt.html) is a bundle of toolchain components. During installation **please do not change the installation location**.
-- [CubeMX](https://www.st.com/en/development-tools/stm32cubeclt.html) is a graphical project configurator. As well **do not change the installation location**.
-- [MCUFinder](https://www.st.com/en/development-tools/st-mcu-finder-pc.html) is a graphical tool to select an ST device. Again **do not change the installation location**.
+- STMicroelectronics.stm32-vscode-extension [STM-VSCode extension](https://marketplace.visualstudio.com/items?itemName=stmicroelectronics.stm32-vscode-extension)
+- ms-vscode.vscode-serial-monitor [SerialMonitor extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-serial-monitor)
 
-After STMTool installation you can find following VSCode extensions using those Extension Ids in the serach box of your extension manager.
+- [CubeClt](https://www.st.com/en/development-tools/stm32cubeclt.html) is a bundle of toolchain components. During installation use default settings and **do not change the installation location**.
+- [CubeMX](https://www.st.com/en/development-tools/stm32cubeclt.html) is a graphical project configurator. As well use default settings and **do not change the installation location**.
+- [MCUFinder](https://www.st.com/en/development-tools/st-mcu-finder-pc.html) is a graphical tool to select an ST device. Again use default settings and **do not change the installation location**.
 
-- STMicroelectronics.stm32-vscode-extension
-- ms-vscode.vscode-serial-monitor
 
 After you've done everything it should look like that
 
 <img src="images/stmExtensionPanel.png" alt="Extension Tab" width="25%">
 
-Check if everything works by clicking through the extension panel, if everything launchs you're fine else you have to debug
+Check if the most important tabs work by clicking through the extension panel, if everything launchs you're fine. Following Key Actions should run:
+
+- STM32CubeMX
+- STMCUFinder
+- Create empty project
 
 Check if **ST-LINK firwmare upgrades are required**: This is the case if the debugger on the development board is to old. You'll find it out if following error messages pup up
 
@@ -164,9 +179,9 @@ stlinkupgrade
 To setup LaTeX for windows one needs to have TeX Live on Windows to install that use the following link and select a method to install it [TexLive Download](https://tug.org/texlive/windows.html). The installation may take some time depending on your laptop up tho 3h.
 
 In VSCode i recommend following extension from the extension manager with the following Extension-id:
-- James-Yu.latex-workshop
+- James-Yu.latex-workshop [To the Extension](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
-After you've setup all this you are able to compile latex documents as well as makrown documents using the Keybind ```Ctrl + Shift + v```
+After you've setup all this you should see a build or compile symbol in the bottom left corner of your active VSCode session. To have a nice view on your latex project please open the report file and place it on the right hand side of your monitor.
 
 ---
 
