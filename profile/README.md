@@ -6,6 +6,21 @@ LZ & Partner GitHub organization.
 The goal is to get new developers productive quickly.
 Detailed rules (naming, versioning, repository structure) are defined separately.
 
+## Table of Contents
+
+- [Organization and Rules](#organization-and-rules)
+  - [Organizational Structure](#organizational-structure)
+- [SSH-Key](#ssh-key)
+  - [Recommended resources](#recommended-resources)
+  - [Simplest way to setup](#simplest-way-to-setup-ssh-key-works-on-windows--linux)
+  - [Optional multiple SSH-Keys](#optional-multiple-ssh-keys)
+- [Git in Powershell aufsetzen](#git-in-powershell-aufsetzen)
+- [Setup STM32 for developing](#setup-stm32-for-developing)
+  - [Bugs and nice to know](#bugs-and-nice-to-know)
+  - [Linux Setup](#linux-setup-stm32)
+- [Latex setup in VSCode](#latex-setup-in-vscode)
+- [Comit regeln und konventionen](#commit-regeln-und-konventionen)
+- [Troubleshooting](#troubleshooting)
 ---
 
 ## Organization and Rules
@@ -153,7 +168,7 @@ Unable to start debugging
 To upgrade the firmware do the following:
 - Plug in your board
 - In VSCode, open the STM32 extension tab
-- Select "Upgrade ST-Link firmware"
+- Under the Debug panel there is a tab wehre STM32 FAULT STATUS REGISTERS ... there should be a place to select "STMLink upgrade"
 - Wait for updates to complete
 
 If it still wont work enter the following command
@@ -161,6 +176,42 @@ If it still wont work enter the following command
 ```console
 stlinkupgrade
 ```
+
+### Linux Setup STM32
+
+Install VSCode similar to the Windows installation
+> **Important**: use your operating systems default package manager, snap/flatpack vversions may break.
+
+- For each software component you have to download the appropriate .zip file from the ST website. Just use the generic Linux installers
+- Unzip to a folder. For example, unyip the CubeMX installer to a folder called cubemx:
+ 
+ On LoccoZ devises these are manly
+
+ - [CubeCLT](https://www.st.com/en/development-tools/stm32cubeclt.html): ```/opt/st/```
+ - [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html): ```/usr/local/...```
+ - [MCUFinder](https://www.st.com/en/development-tools/st-mcu-finder-pc.html): ```/usr/local/STM...```
+
+Example of unzip to a folder
+
+```$ unzip en.stm32cubemx-lin-v6-12-0.zip -d cubemx```
+
+Make the contained script **executable**:
+```bash
+> cd cubemx
+> chmod +x SetupSTM32CubeMX-6.12.0
+> sudo ./SetupSTM32CubeMX-6.12.9
+```
+
+If the script is not excepted under sudo it may not correctly install all drivers and rules. During the installation prompts **install all additional components** (such as the st-link debug server). Importantly, **note the installation directory** for everzthing you install.
+
+After installation the process is similar to windows read the following chapter [Setup STM32 for developing](#setup-stm32-for-developing)
+
+Finally Install ncurses via apt:
+```bash 
+sudo apt-get install libncurses5
+```
+
+The latest versions of ubuntu do not contain libncurses5 in their repositories anymore To install it manually, see [here](https://gist.github.com/schilkp/8fcab720fffc11cb0034010c1dc05404)
 
 ### Bugs and nice to know
 
@@ -172,6 +223,10 @@ stlinkupgrade
   4. Add the ```C:\Program Files\ninja``` to your system path.
   5. Close and re-open VSCode
 
+
+### Build STM32 Project
+
+
 ---
 
 ## LaTeX setup in VSCode
@@ -182,6 +237,17 @@ In VSCode i recommend following extension from the extension manager with the fo
 - James-Yu.latex-workshop [To the Extension](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
 After you've setup all this you should see a build or compile symbol in the bottom left corner of your active VSCode session. To have a nice view on your latex project please open the report file and place it on the right hand side of your monitor.
+
+### Install TexLive on Linux
+
+To install TexLive on Linux use the following command:
+
+```bash
+sudo apt update
+sudo apt install texlive-full
+```
+
+The rest should be similar to windows
 
 ---
 
