@@ -147,6 +147,12 @@ If it still wont work enter the following command
 stlinkupgrade
 ```
 
+### Bugs and nice to know
+
+- **Build fails because cmd.exe was not found** The windows commandline could not be found by the build tools add it to the system path environment variable [Tutorial](https://www.thewindowsclub.com/how-to-add-edit-a-path-variable-in-windows) add the following path into the system environment variables ```C:\Windows\System32```
+- **Bad CMake executable**. Check to make sure it is intalled if not install CMake and Ninja
+  1. Install [CMake](https://cmake.org/download/) installer and run it. Make sure to, when prompted, add CMake to the path of the current user. **This is not the default option**.
+  2. Install the [Ninja](https://github.com/ninja-build/ninja/releases) build tool executable.
 ---
 
 ## Commit Regeln und Konventionen 
