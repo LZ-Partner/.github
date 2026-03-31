@@ -19,6 +19,8 @@ Detailed rules (naming, versioning, repository structure) are defined separately
   - [Bugs and nice to know](#bugs-and-nice-to-know)
   - [Linux Setup](#linux-setup-stm32)
 - [Latex setup in VSCode](#latex-setup-in-vscode)
+- [Kicad setup](#kicad-setup)
+  - [Linux setup](#linux-kicad-setup)
 - [Comit regeln und konventionen](#commit-regeln-und-konventionen)
 - [Troubleshooting](#troubleshooting)
 ---
@@ -248,6 +250,16 @@ sudo apt install texlive-full
 ```
 
 The rest should be similar to windows
+
+---
+
+## KiCad Setup
+
+To install Kicad on Windows simply navigate to [this](https://www.kicad.org/download/) page and select your operating system. Run the exe and select default operations except if a tab opens wehre you have to select librarys you should select KiCad default library
+
+### Linux KiCad Setup
+
+For linux it is very similar
 
 ---
 
