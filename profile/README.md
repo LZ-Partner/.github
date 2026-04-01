@@ -20,6 +20,7 @@ Detailed rules (naming, versioning, repository structure) are defined separately
   - [Linux Setup](#linux-setup-stm32)
 - [Latex setup in VSCode](#latex-setup-in-vscode)
 - [Kicad setup](#kicad-setup)
+  - [Windows setup](#windows-kicad-setup)
   - [Linux setup](#linux-kicad-setup)
 - [Commit Regeln und konventionen](#commit-regeln-und-konventionen)
 - [Troubleshooting](#troubleshooting)
@@ -157,13 +158,13 @@ Check if the most important tabs work by clicking through the extension panel, i
 
 Check if **ST-LINK firmware upgrades are required**: This is the case if the debugger on the development board is to old. You'll find it out if following error messages pup up
 
-```console
+```
 Could not find the task 'Build'
 ```
 
 or
 
-```console
+```
 Unable to start debugging
 ```
 
@@ -175,7 +176,7 @@ To upgrade the firmware do the following:
 
 If it still won't work enter the following command
 
-```console
+```bash
 stlinkupgrade
 ```
 
@@ -262,11 +263,47 @@ The rest should be similar to windows
 
 ## KiCad Setup
 
-To install Kicad on Windows simply navigate to [this](https://www.kicad.org/download/) page and select your operating system. Run the exe and select default operations except if a tab opens where you have to select libraries you should select KiCad default library
+KiCad is a free and open source software which is widely used to design electrical circuits besides PCBs
+
+### Windows KiCad Setup
+
+To install KiCad on Windows simply navigate to [this](https://www.kicad.org/download/) page and select your operating system in our case Windows. You will get redirected to a page wehre Windows Downloads are available. Choose the latest stable release and your region i.e. Europe/Cern-Switzerland. Run the exe by clicking on it in the Explorer by double clicking on the ```Kicad-VERSION-Number-x86.exe``` it will open a winodw. Press continue or weiter. You now have to select following points in your installer (we recommend default settings).
+
+- Local user or system wide installation
+- Select components
+- Select systempath
+
+Installation should be finished
+
+---
 
 ### Linux KiCad Setup
 
-For linux it is very similar
+For Linux there exist two options: the default option using the installer from the [webpage](#webpage-setup) or the [console](#console-setup) installation.
+
+#### Webpage setup
+
+To install KiCad on Linux you have to visit [this](https://www.kicad.org/download/) web page.
+- Select Linux and choose the latest stable release as well as your region Europe/Cern-Switzerland. It starts downloading a ```.tar``` file.
+- Unpack the ```.tar``` file and run unpacked ```.AppImage``` file by clicking on it
+- A window will Welcome... press next
+- The next windows use default options (already selected by the setup wizard) and press next
+
+KiCad should now be installed <span style="color:red">not 100% sure how to make installation persistant </span>
+
+#### Console setup
+
+Using the console it is straight forward
+
+```
+sudo apt install kicad
+```
+
+Now it asks:
+- Password (enter it)
+- If you are sure to install it, either press y or j depending on your local language settings
+
+Installations should be finished
 
 ---
 
