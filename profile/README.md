@@ -91,8 +91,8 @@ Test the connection:
 
 ---
 
-## Git in Powershell Aufsetzen
-Falls du ein Youtube-Tutorial bevorzugst, schau dir bitte [dieses Tutorial](https://www.youtube.com/watch?v=TwKyqOf5mJ4) an. 
+## Setup Git in Powershell
+If you prefer a Youtube-Tutorial please watch following [Tutorial](https://www.youtube.com/watch?v=TwKyqOf5mJ4). 
 
 1. Install Git
    - Download Git from: https://git-scm.com/downloads
@@ -117,7 +117,8 @@ Configure your global Git identity (required for commits):
     Import-Module posh-git
     Add-PoshGitToProfile -AllHosts
     ```
-    Nun solltest du nützliche Extensions, die dir signalisieren, was commited und pushed werden kann und was noch untracked ist:
+
+    Now we add helpful extensions which indicate what is commited and what is ready to get pushed as well addistionally it shows the number of untracked files.
     ```powershell
     C:\Users\username\path\to\git\directory [main ≡ +1 ~1 -0 !]>
     ```    
