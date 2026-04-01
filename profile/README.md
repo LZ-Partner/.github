@@ -70,11 +70,11 @@ Default locations:
 
 - Linux:
 
-    `~/.ssh/id_wd25519.pub`
+    `~/.ssh/id_ed25519.pub`
 
 To print the key in your terminal
 
-cat `~/.ssh/id?ed25519.pub`
+cat `~/.ssh/id_ed25519.pub`
 
 Copy the entire output
 
@@ -139,7 +139,7 @@ Configure your global Git identity (required for commits):
     ```powershell
     C:\Users\username\path\to\git\directory [main ≡ +1 ~1 -0 !]>
     ```    
-5. Als Test kannst du die LoccoZ-Organisation Repository (gitlab-profile) klonen:
+5. To test your setup you should clone some LoccoZ-Organisation Repository (gitlab-profile):
     ```powershell
     > cd C:\Users\$USERNAME$\path\to\desired\destination
     > git clone git@gitlab.com:loccoz-system-ag/loccoz-organization.git
@@ -149,23 +149,60 @@ Configure your global Git identity (required for commits):
 
 ## STM32 development environment setup
 
-We setup VSCode for STM32 development.
+We use [VSCode](https://code.visualstudio.com/) for STM32 development. This chapter is very demanding and the setup process isn't trivial. First we guide you throug windows installation and setup process aftwerwards follows linux. Everything except VSCode (used for documentation) was uninstalled to write this guide. 
 
 ### Windows STM32 Setup
-1. Install VSCode using the following link [VSCode download](https://code.visualstudio.com/download)
-2. Install the STM32 as well as Serial Monitor extension from the official Microsoft Marketplace
 
-Besides your IDE you need additional external dependencies to start developing. We recommend creating an ST account to download the required software.
+### 1. Install IDE
+Install VSCode using [this](https://code.visualstudio.com/) link
+- Select Windows Installation and download it
+- The Setup Wizzard window will open use defualt settings and accept license agreements continue until installation starts
+- Boot VSCode
 
-- STMicroelectronics.stm32-vscode-extension [STM-VSCode extension](https://marketplace.visualstudio.com/items?itemName=stmicroelectronics.stm32-vscode-extension)
-- ms-vscode.vscode-serial-monitor [SerialMonitor extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-serial-monitor)
+Here a [Video Tutorial](https://www.youtube.com/watch?v=f8_uF_IDV50) about basic funcionalities of VSCode
+
+### 2. Install VSCode Plugins
+ 
+Following VSCode extensions are required, here [this](https://marketplace.visualstudio.com/VSCode) link redirects you to the market place wehre you can find extensions
+
+- STMicroelectronics.stm32-vscode-extension
+- ms-vscode.vscode-serial-monitor
+
+
+Are the important extensions to setup
+1. Visit the two links [STM-VSCode extension](https://marketplace.visualstudio.com/items?itemName=stmicroelectronics.stm32-vscode-extension), [SerialMonitor extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-serial-monitor)
+2. Press the install button
+3. A pop up will spawn, open in VSCode accept
+4. Now VSCode should open, install the according plugin
+
+Plugins should be installed.
+
+### 3. Install the STM32 Applications
+
+The following three Applications are important
 
 - [CubeClt](https://www.st.com/en/development-tools/stm32cubeclt.html) is a bundle of toolchain components. During installation use default settings and **do not change the installation location**.
 - [CubeMX](https://www.st.com/en/development-tools/stm32cubeclt.html) is a graphical project configurator. As well use default settings and **do not change the installation location**.
 - [MCUFinder](https://www.st.com/en/development-tools/st-mcu-finder-pc.html) is a graphical tool to select an ST device. Again use default settings and **do not change the installation location**.
 
+For all three repeat the process described below
 
-After you've done everything it should look like that
+1. Visit the link CubeClt link from above
+2. Press the button get Software you'll be redirected to a page with download options
+3. Since we are on Windows we use the latest Windows installer
+4. You have to accept the licens and create an account to install it download will start
+5. After download finished open the zip folder and start the `st-stm32cubectl-versionnumber.exe` by double clicking
+6. Setup wizzard wil pop up, you have to agree the license agreement
+7. Default settings are good you don't need to change something press continue or next the whole time until installation process starts finally finish the process
+
+### 4. Install Cmake
+CMake is an open-source build system generator for software projects. If you want more information about CMake visit [this](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Why%20CMake.html) Link. We'll guide you through the installation process.
+
+1. Visit [this](https://cmake.org/download/) link to download
+2. Press on the green download button in the top right 
+3. Select the `cmake-versionnumber-x86_64.msi` file
+4. Install it by double clicking the `.msi` file in the Download folder
+5. Select the default selections, most important is `Add CMake to the PATH environment variable`
 
 <img src="images/stmExtensionPanel.png" alt="Extension Tab" width="25%">
 
