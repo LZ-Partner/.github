@@ -11,7 +11,7 @@ Detailed rules (naming, versioning, repository structure) are defined separately
 - [Organization and Rules](#organization-and-rules)
   - [Organizational Structure](#organizational-structure)
 - [SSH-Key](#ssh-key)
-- [Git in Powershell aufsetzen](#git-in-powershell-aufsetzen)
+- [Git in Powershell aufsetzen](#setup-git-in-powershell)
 - [STM32 development environment setup](#stm32-development-environment-setup)
   - [Windows Setup](#windows-stm32-setup)
   - [Linux Setup](#linux-stm32-setup)
