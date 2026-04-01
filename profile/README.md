@@ -11,9 +11,6 @@ Detailed rules (naming, versioning, repository structure) are defined separately
 - [Organization and Rules](#organization-and-rules)
   - [Organizational Structure](#organizational-structure)
 - [SSH-Key](#ssh-key)
-  - [Recommended resources](#recommended-resources)
-  - [Simplest way to setup](#simplest-way-to-setup-ssh-key-works-on-windows--linux)
-  - [Optional multiple SSH-Keys](#optional-multiple-ssh-keys)
 - [Git in Powershell aufsetzen](#git-in-powershell-aufsetzen)
 - [STM32 development environment setup](#stm32-development-environment-setup)
   - [Windows Setup](#windows-stm32-setup)
@@ -66,8 +63,20 @@ Now you have to select
 -  Passphrase either no or with passphrase the [link](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) provides additional information
 
 ### 2. Find and copy the key
-- Using the path where the key is stored by default (on Windows: `C:\Users\YOUR_USERNAME\.ssh\id_ed25519.pub`, on Linux `~/.ssh/id_ed25519.pub`) you can open the ```.pub``` key and copy it
-- Install the key
+Default locations:
+- Windows:
+
+    `C:\Users\YOUR_USERNAME\.ssh\id_ed25519.pub`
+
+- Linux:
+
+    `~/.ssh/id_wd25519.pub`
+
+To print the key in your terminal
+
+cat `~/.ssh/id?ed25519.pub`
+
+Copy the entire output
 
 ### 3. Add SSH Key to GitHub 
   1. In your browser visit [GitHub](https://github.com) 
@@ -79,7 +88,7 @@ Now you have to select
   5. Paste your key and save
 
 
-Test the connection:
+### 4. Test the connection:
 
 ```
 ssh -T git@github.com
@@ -96,7 +105,6 @@ Host github.com
   User git
   IdentityFile ~/.ssh/github_key
 ```
-
 
 ---
 
