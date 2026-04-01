@@ -21,7 +21,7 @@ Detailed rules (naming, versioning, repository structure) are defined separately
 - [Latex setup in VSCode](#latex-setup-in-vscode)
 - [Kicad setup](#kicad-setup)
   - [Linux setup](#linux-kicad-setup)
-- [Comit regeln und konventionen](#commit-regeln-und-konventionen)
+- [Commit Regeln und konventionen](#commit-regeln-und-konventionen)
 - [Troubleshooting](#troubleshooting)
 ---
 
@@ -71,7 +71,7 @@ ssh-keygen
 
 Get your ssh key from the following path: ```C:\Users\**YOURUSERNAME**\.ssh\id_ed25519.pub``` (Windows)
 
-Get your ssh key from the following path: ```/homw/**YOURUSERNAME**/.shh/id_ed25519.pub``` (Linux)
+Get your ssh key from the following path: ```/home/**YOURUSERNAME**/.ssh/id_ed25519.pub``` (Linux)
 
 
 ### Optional: multiple SSH keys
@@ -120,7 +120,7 @@ Configure your global Git identity (required for commits):
     ```powershell
     C:\Users\username\path\to\git\directory [main ≡ +1 ~1 -0 !]>
     ```    
-4. Als Test kannst du die LoccoZ-Organisation Repository (gitlab-profile) klonen:
+5. Als Test kannst du die LoccoZ-Organisation Repository (gitlab-profile) klonen:
     ```powershell
     > cd C:\Users\$USERNAME$\path\to\desired\destination
     > git clone git@gitlab.com:loccoz-system-ag/loccoz-organization.git
@@ -149,13 +149,13 @@ After you've done everything it should look like that
 
 <img src="images/stmExtensionPanel.png" alt="Extension Tab" width="25%">
 
-Check if the most important tabs work by clicking through the extension panel, if everything launchs you're fine. Following Key Actions should run:
+Check if the most important tabs work by clicking through the extension panel, if everything launches you're fine. Following Key Actions should run:
 
 - STM32CubeMX
 - STMCUFinder
 - Create empty project
 
-Check if **ST-LINK firwmare upgrades are required**: This is the case if the debugger on the development board is to old. You'll find it out if following error messages pup up
+Check if **ST-LINK firmware upgrades are required**: This is the case if the debugger on the development board is to old. You'll find it out if following error messages pup up
 
 ```console
 Could not find the task 'Build'
@@ -170,10 +170,10 @@ Unable to start debugging
 To upgrade the firmware do the following:
 - Plug in your board
 - In VSCode, open the STM32 extension tab
-- Under the Debug panel there is a tab wehre STM32 FAULT STATUS REGISTERS ... there should be a place to select "STMLink upgrade"
+- Under the Debug panel there is a tab where STM32 FAULT STATUS REGISTERS ... there should be a place to select "STMLink upgrade"
 - Wait for updates to complete
 
-If it still wont work enter the following command
+If it still won't work enter the following command
 
 ```console
 stlinkupgrade
@@ -185,9 +185,9 @@ Install VSCode similar to the Windows installation
 > **Important**: use your operating systems default package manager, snap/flatpack vversions may break.
 
 - For each software component you have to download the appropriate .zip file from the ST website. Just use the generic Linux installers
-- Unzip to a folder. For example, unyip the CubeMX installer to a folder called cubemx:
+- Unzip to a folder. For example, unzip the CubeMX installer to a folder called cubemx:
  
- On LoccoZ devises these are manly
+ On LoccoZ devices these are mainly
 
  - [CubeCLT](https://www.st.com/en/development-tools/stm32cubeclt.html): ```/opt/st/```
  - [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html): ```/usr/local/...```
@@ -201,10 +201,10 @@ Make the contained script **executable**:
 ```bash
 > cd cubemx
 > chmod +x SetupSTM32CubeMX-6.12.0
-> sudo ./SetupSTM32CubeMX-6.12.9
+> sudo ./SetupSTM32CubeMX-6.12.0
 ```
 
-If the script is not excepted under sudo it may not correctly install all drivers and rules. During the installation prompts **install all additional components** (such as the st-link debug server). Importantly, **note the installation directory** for everzthing you install.
+If the script is not executed under sudo it may not correctly install all drivers and rules. During the installation prompts **install all additional components** (such as the st-link debug server). Importantly, **note the installation directory** for everything you install.
 
 After installation the process is similar to windows read the following chapter [Setup STM32 for developing](#setup-stm32-for-developing)
 
@@ -217,8 +217,8 @@ The latest versions of ubuntu do not contain libncurses5 in their repositories a
 
 ### Bugs and nice to know
 
-- **Build fails because cmd.exe was not found** The windows commandline could not be found by the build tools add it to the system path environment variable [Tutorial](https://www.thewindowsclub.com/how-to-add-edit-a-path-variable-in-windows) add the following path into the system environment variables ```C:\Windows\System32```
-- **Bad CMake executable**. Check to make sure it is intalled if not install CMake and Ninja
+- **Build fails because cmd.exe was not found** The windows command line could not be found by the build tools add it to the system path environment variable [Tutorial](https://www.thewindowsclub.com/how-to-add-edit-a-path-variable-in-windows) add the following path into the system environment variables ```C:\Windows\System32```
+- **Bad CMake executable**. Check to make sure it is installed if not install CMake and Ninja
   1. Install [CMake](https://cmake.org/download/) installer and run it. Make sure to, when prompted, add CMake to the path of the current user. **This is not the default option**.
   2. Install the [Ninja](https://github.com/ninja-build/ninja/releases) build tool executable.
   3. Place the downloaded ```ninja.exe``` into the folder ```C:\Program Files\ninja```
@@ -228,20 +228,20 @@ The latest versions of ubuntu do not contain libncurses5 in their repositories a
 
 ### Build STM32 Project
 
-Start STM32CubeMX select New Project either select start project from MCU or Start My Project from ST Board. After you've selected the board navigate to ```Project Manager``` and at the point wehre you have to select the ```Toolchain / IDE``` select CMake and the default ```Compiler/Linker``` GCC. Then Generate Code.
+Start STM32CubeMX select New Project either select start project from MCU or Start My Project from ST Board. After you've selected the board navigate to ```Project Manager``` and at the point where you have to select the ```Toolchain / IDE``` select CMake and the default ```Compiler/Linker``` GCC. Then Generate Code.
 
 **Important the project name has to be the same name as the toolchain location folder**
 
 After your code is generated please open it with Visual studiocode if you want to compile it you have to generate a build file, after that you can flash your MCU.
 
-If you open the folder wehre it is stored you have many popus in the bottom right corner please select initialze board and rund debug cmake project. Also in the debug section give create a stm launch.json file before you can start. Important always select STM32 STLink GDB Server and build the project before you release it.
+If you open the folder where it is stored you have many pop up in the bottom right corner please select initialze board and run debug cmake project. Also in the debug section give create a stm launch.json file before you can start. Important always select STM32 STLink GDB Server and build the project before you release it.
 
 
 ---
 
 ## LaTeX setup in VSCode
 
-To setup LaTeX for windows one needs to have TeX Live on Windows to install that use the following link and select a method to install it [TexLive Download](https://tug.org/texlive/windows.html). The installation may take some time depending on your laptop up tho 3h.
+To setup LaTeX for windows one needs to have TeX Live on Windows to install that use the following link and select a method to install it [TexLive Download](https://tug.org/texlive/windows.html). The installation may take some time depending on your laptop up to 3h.
 
 In VSCode i recommend following extension from the extension manager with the following Extension-id:
 - James-Yu.latex-workshop [To the Extension](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
@@ -263,7 +263,7 @@ The rest should be similar to windows
 
 ## KiCad Setup
 
-To install Kicad on Windows simply navigate to [this](https://www.kicad.org/download/) page and select your operating system. Run the exe and select default operations except if a tab opens wehre you have to select librarys you should select KiCad default library
+To install Kicad on Windows simply navigate to [this](https://www.kicad.org/download/) page and select your operating system. Run the exe and select default operations except if a tab opens where you have to select libraries you should select KiCad default library
 
 ### Linux KiCad Setup
 
