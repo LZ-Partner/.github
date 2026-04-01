@@ -232,10 +232,9 @@ Start STM32CubeMX select New Project either select start project from MCU or Sta
 
 **Important the project name has to be the same name as the toolchain location folder**
 
-After your code is generated please open it with Visual studiocode if you want to compile it you have to generate a build file, after that you can flash your MCU.
+After your code is generated please open it with VSCode if you want to build it there is an icon in the bottom left corner to build the project. After the Build process finished please go to the Debug Section and run the project. Often you have to select the STM32STLink_GDB_Server to flash the STM32 MCU Board
 
-If you open the folder where it is stored you have many pop up in the bottom right corner please select initialze board and run debug cmake project. Also in the debug section give create a stm launch.json file before you can start. Important always select STM32 STLink GDB Server and build the project before you release it.
-
+[Here](https://community.st.com/t5/stm32-mcus/how-to-use-vs-code-with-stm32-microcontrollers/ta-p/742589) more details and a tutorial to Setup the Development environment.
 
 ---
 
