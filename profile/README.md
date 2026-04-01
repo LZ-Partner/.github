@@ -204,19 +204,40 @@ CMake is an open-source build system generator for software projects. If you wan
 4. Install it by double clicking the `.msi` file in the Download folder
 5. Select the default selections, most important is `Add CMake to the PATH environment variable`
 
-### 5. Install Ninja
 
-### 6. System environment variables
+
+### 5. System environment variables (Optional but to be safe)
+This is optional but to be safe sometimes `Build fails because cmd.exe was not found`. You have to add the location of the executable to the path usually (`C:\Windows\System32`)
+
+1. Search for environment variables
+2. Click Environment Variables
+3. Select the "Path" system variable and click edit:
+4. Click "New" and add the `C:\Windows\System32` path and click OK
+
+### 6. Install Ninja (Optional but to be safe)
+Ninja is a small build system with focus on speed. Ninja aims to be an assembler and builds projects fast but read more if interested [here](https://ninja-build.org/)
+
+1. Download ninja from [this](https://github.com/ninja-build/ninja/releases) link here, select ninja-win.zip
+2. Unzip the folder `ninja.exe` should spawn
+3. Place the downloaded `ninja.exe` into the folder `C:\Program Files\ninja` you have to create the ninja folder and place the `.exe` in it
+4. Add the `C:\Program Files\ninja` folder to your system path this is a [tutorial](https://windowsloop.com/how-to-add-to-windows-path/).
 
 ### 7. Install STLink USB drivers
 
 Finally you've setup all the stuff now you only need to install the STLink USB drivers and should be able to start
 
 1. Open the STM32 extension in the left bar
-2. Click on the Install STLink USB drivers
-3. If there is a driver update the update wizzard should pop up press continue and wait until it finishes
+2. Plug in your STM32Board
+3. Click on the Install STLink USB drivers
+4. If there is a driver update the update wizzard should pop up press continue and wait until it finishes
 
-Now you should be ready to go
+If it won't work open the VSCode Console and enter
+```code
+stlinkupgrade
+```
+It should open a window if its the case go through step 4. and execute it
+
+Now you should be ready to go ;)
 
 ### 8. Generate Project
 
@@ -233,8 +254,9 @@ Now you should be ready to go
 1. In the bottom left corner of VSCode there should exist a build button. Press it the project should build
 2. Now open the debuger extension and run the file if there opens a pop up select `STM32Cube: Launch ST-Link GDB Server`
 3. Perhaps you have to build a json run file
-4. Run the project, it stops at `HAL_Init()`, press `F5` or continue button this is the blue arrow
+4. Run the project from the left bar, it will stop at `HAL_Init()`, press `F5` or continue button this is the blue arrow
 
+<!--
 <img src="images/stmExtensionPanel.png" alt="Extension Tab" width="25%">
 
 Check if the most important tabs work by clicking through the extension panel, if everything launches you're fine. Following Key Actions should run:
@@ -266,16 +288,40 @@ If it still won't work enter the following command
 ```bash
 stlinkupgrade
 ```
+-->
 
 ### Linux STM32 Setup
 
 Install VSCode similar to the Windows installation
-> **Important**: use your operating systems default package manager, snap/flatpack vversions may break.
+> **Important**: using your operating systems default package manager, snap/flatpack vversions may break.
 
-- For each software component you have to download the appropriate .zip file from the ST website. Just use the generic Linux installers
-- Unzip to a folder. For example, unzip the CubeMX installer to a folder called cubemx:
+### 1. Setup VSCode
+Open the terminal and enter following commands
+```
+sudo apt update
+sudo apt install code
+```
+Now VSCode should be installed
+
+### 2. Install VSCode Plugins
  
-The default paths of the three important applications are:
+Following VSCode extensions are required, here [this](https://marketplace.visualstudio.com/VSCode) link redirects you to the market place wehre you can find extensions
+
+- STMicroelectronics.stm32-vscode-extension
+- ms-vscode.vscode-serial-monitor
+
+
+Are the important extensions to setup
+1. Visit the two links [STM-VSCode extension](https://marketplace.visualstudio.com/items?itemName=stmicroelectronics.stm32-vscode-extension), [SerialMonitor extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-serial-monitor)
+2. Press the install button
+3. A pop up will spawn, open in VSCode accept
+4. Now VSCode should open, install the according plugin
+
+Plugins should be installed.
+
+### 3. Install the STM32 Applications
+
+Following three STM32 Applications have to be installed. Here are the default paths for each STM32 application
 
  - [CubeCLT](https://www.st.com/en/development-tools/stm32cubeclt.html): ```/opt/st/```
  - [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html): ```/usr/local/...```
