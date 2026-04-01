@@ -53,28 +53,39 @@ Direct commits to protected branches are not allowed.
 
 ## SSH-Key
 
-Access to repositories is done via **SSH keys**.
+SSH-Keys are used to securely authenticate with GitHub without using a password. This guide should work for Windows and Linux
 
-### Recommended resources
-- GitHub SSH overview:  
-  https://docs.github.com/en/authentication/connecting-to-github-with-ssh
-- Generating a new SSH key:  
-  https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
-- Adding an SSH key to GitHub:  
-  https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+### 1. Generate the Key
 
-
-### Simplest way to setup SSH-Key works on Windows & Linux
-
-Open your terminal/comandline enter the following command
+To generate a new SSH-key open your terminal/cmd and use the following command to generate it. this is the default option with no additional information stored in it for more information read [this](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
 ```
 ssh-keygen
 ```
+Now you have to select
+-  File to store it in (default works except you want multi setup)
+-  Passphrase either no or with passphrase the [link](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) provides additional information
 
-Get your ssh key from the following path: ```C:\path\to\your\.ssh\id_ed25519.pub``` (Windows)
+### 2. Find and copy the key
+- Using the path where the key is stored by default (on Windows: `C:\Users\YOUR_USERNAME\.ssh\id_ed25519.pub`, on Linux `~/.ssh/id_ed25519.pub`) you can open the ```.pub``` key and copy it
+- Install the key
 
-Get your ssh key from the following path: ```/path/to/your/.ssh/id_ed25519.pub``` (Linux)
+### 3. Add SSH Key to GitHub 
+  1. In your browser visit [GitHub](https://github.com) 
+  2. Click on your Avatar in the top right corner
+  3. Navigate to:
+      - Settings
+      - Access -> SSH and GPG keys
+  4. Click "New SSH Key"
+  5. Paste your key and save
 
+
+Test the connection:
+
+```
+ssh -T git@github.com
+```
+
+The output should be something like this ```Hey YOURUSERNAME! You've successfully authenticated ....```
 
 ### Optional: multiple SSH keys
 If you use multiple Git platforms or keys, configure `~/.ssh/config` per key like this:
@@ -86,9 +97,6 @@ Host github.com
   IdentityFile ~/.ssh/github_key
 ```
 
-Test the connection:
-
-`ssh -T git@github.com`
 
 ---
 
