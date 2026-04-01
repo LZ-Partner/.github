@@ -92,7 +92,7 @@ Test the connection:
 ---
 
 ## Setup Git in Powershell
-If you prefer a Youtube-Tutorial please watch following [Tutorial](https://www.youtube.com/watch?v=TwKyqOf5mJ4). 
+If you prefer a Youtube-Tutorial please watch following [Tutorial](https://www.youtube.com/watch?v=TwKyqOf5mJ4) after that for a better experience jump to point 4. 
 
 1. Install Git
    - Download Git from: https://git-scm.com/downloads
