@@ -15,15 +15,16 @@ Detailed rules (naming, versioning, repository structure) are defined separately
   - [Simplest way to setup](#simplest-way-to-setup-ssh-key-works-on-windows--linux)
   - [Optional multiple SSH-Keys](#optional-multiple-ssh-keys)
 - [Git in Powershell aufsetzen](#git-in-powershell-aufsetzen)
-- [Setup STM32 for developing](#setup-stm32-for-developing)
-  - [Bugs and nice to know](#bugs-and-nice-to-know)
-  - [Linux Setup](#linux-setup-stm32)
+- [STM32 development environment setup](#stm32-development-environment-setup)
+  - [Windows Setup](#windows-stm32-setup)
+  - [Linux Setup](#linux-stm32-setup)
 - [Latex setup in VSCode](#latex-setup-in-vscode)
 - [Kicad setup](#kicad-setup)
   - [Windows setup](#windows-kicad-setup)
   - [Linux setup](#linux-kicad-setup)
 - [Commit Regeln und konventionen](#commit-regeln-und-konventionen)
 - [Troubleshooting](#troubleshooting)
+
 ---
 
 ## Organization and Rules
@@ -70,9 +71,9 @@ Open your terminal/comandline enter the following command
 ssh-keygen
 ```
 
-Get your ssh key from the following path: ```C:\Users\**YOURUSERNAME**\.ssh\id_ed25519.pub``` (Windows)
+Get your ssh key from the following path: ```C:\path\to\your\.ssh\id_ed25519.pub``` (Windows)
 
-Get your ssh key from the following path: ```/home/**YOURUSERNAME**/.ssh/id_ed25519.pub``` (Linux)
+Get your ssh key from the following path: ```/path/to/your/.ssh/id_ed25519.pub``` (Linux)
 
 
 ### Optional: multiple SSH keys
@@ -130,10 +131,11 @@ Configure your global Git identity (required for commits):
 
 ---
 
-## Setup STM32 for developing
+## STM32 development environment setup
 
 We setup VSCode for STM32 development.
 
+### Windows STM32 Setup
 1. Install VSCode using the following link [VSCode download](https://code.visualstudio.com/download)
 2. Install the STM32 as well as Serial Monitor extension from the official Microsoft Marketplace
 
@@ -181,7 +183,7 @@ If it still won't work enter the following command
 stlinkupgrade
 ```
 
-### Linux Setup STM32
+### Linux STM32 Setup
 
 Install VSCode similar to the Windows installation
 > **Important**: use your operating systems default package manager, snap/flatpack vversions may break.
@@ -189,7 +191,7 @@ Install VSCode similar to the Windows installation
 - For each software component you have to download the appropriate .zip file from the ST website. Just use the generic Linux installers
 - Unzip to a folder. For example, unzip the CubeMX installer to a folder called cubemx:
  
- On LoccoZ devices these are mainly
+The default paths of the three important applications are:
 
  - [CubeCLT](https://www.st.com/en/development-tools/stm32cubeclt.html): ```/opt/st/```
  - [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html): ```/usr/local/...```
@@ -212,6 +214,7 @@ After installation the process is similar to windows read the following chapter 
 
 Finally Install ncurses via apt:
 ```bash 
+sudo apt update
 sudo apt-get install libncurses5
 ```
 
@@ -297,6 +300,7 @@ KiCad should now be installed <span style="color:red">not 100% sure how to make 
 Using the console it is straight forward
 
 ```
+sudo apt update
 sudo apt install kicad
 ```
 
