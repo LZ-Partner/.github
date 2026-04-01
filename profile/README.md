@@ -182,7 +182,7 @@ Plugins should be installed.
 The following three Applications are important
 
 - [CubeClt](https://www.st.com/en/development-tools/stm32cubeclt.html) is a bundle of toolchain components. During installation use default settings and **do not change the installation location**.
-- [CubeMX](https://www.st.com/en/development-tools/stm32cubeclt.html) is a graphical project configurator. As well use default settings and **do not change the installation location**.
+- [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html#) is a graphical project configurator. As well use default settings and **do not change the installation location**.
 - [MCUFinder](https://www.st.com/en/development-tools/st-mcu-finder-pc.html) is a graphical tool to select an ST device. Again use default settings and **do not change the installation location**.
 
 For all three repeat the process described below
@@ -203,6 +203,37 @@ CMake is an open-source build system generator for software projects. If you wan
 3. Select the `cmake-versionnumber-x86_64.msi` file
 4. Install it by double clicking the `.msi` file in the Download folder
 5. Select the default selections, most important is `Add CMake to the PATH environment variable`
+
+### 5. Install Ninja
+
+### 6. System environment variables
+
+### 7. Install STLink USB drivers
+
+Finally you've setup all the stuff now you only need to install the STLink USB drivers and should be able to start
+
+1. Open the STM32 extension in the left bar
+2. Click on the Install STLink USB drivers
+3. If there is a driver update the update wizzard should pop up press continue and wait until it finishes
+
+Now you should be ready to go
+
+### 8. Generate Project
+
+1. Open STMCubeMX deskto application
+2. Click on start my project from ST Board
+3. Select the corresponding ST Board
+4. A new panel launches wehre you will see the Pinout Configuration
+5. Navigate to Project Manager and give the project a name
+6. Define the Toolchain/IDE `CMake`
+7. Select the default Compiler/Linker `GCC`
+
+### 9. Flash the chip
+
+1. In the bottom left corner of VSCode there should exist a build button. Press it the project should build
+2. Now open the debuger extension and run the file if there opens a pop up select `STM32Cube: Launch ST-Link GDB Server`
+3. Perhaps you have to build a json run file
+4. Run the project, it stops at `HAL_Init()`, press `F5` or continue button this is the blue arrow
 
 <img src="images/stmExtensionPanel.png" alt="Extension Tab" width="25%">
 
