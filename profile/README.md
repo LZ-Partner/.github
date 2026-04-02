@@ -113,7 +113,7 @@ Host github.com
 ---
 
 ## Setup Git in Powershell
-If you prefer a Youtube-Tutorial please watch following [Tutorial](https://www.youtube.com/watch?v=TwKyqOf5mJ4) after that for a better experience jump to point 4. 
+If you prefer a Youtube-Tutorial please watch following [Tutorial](https://www.youtube.com/watch?v=TwKyqOf5mJ4) after you watched the video tutorialfor a better experience jump to point 4. 
 
 1. Install Git
    - Download Git from: https://git-scm.com/downloads
@@ -153,13 +153,13 @@ Configure your global Git identity (required for commits):
 
 ## STM32 development environment setup
 
-We use [VSCode](https://code.visualstudio.com/) for STM32 development. This chapter is very demanding and the setup process isn't trivial. First we guide you through the Windows installation and setup process afterwards follows, linux follows. All tools except VSCode (used for documentation) were uninstalled to ensure a celan setup for this guide. 
+We use [VSCode](https://code.visualstudio.com/) for STM32 development. This chapter is very demanding and the setup process isn't trivial. First we guide you through the Windows installation and setup process afterwards, linux follows. All tools except VSCode (used for this documentation) were uninstalled to ensure a celan setup for this guide. 
 
 ### Windows STM32 Setup
 
 ### 1. Install VSCode IDE Windows
 Install VSCode using [this](https://code.visualstudio.com/) link
-- Select Windows Installation and download it
+- Select Windows installation and download it
 - The Setup Wizard window will open use default settings and accept license agreements continue until installation starts
 - Launch VSCode
 
@@ -211,7 +211,7 @@ CMake is an open-source build system generator for software projects. If you wan
 
 
 ### 5. System environment variables (Optional but recommended)
-This is optional but to be safe sometimes `Build fails because cmd.exe was not found`. You have to add the location of the executable to the path usually (`C:\Windows\System32`)
+This is optional but here to be safe and reduce errors. Sometimes `Build fails because cmd.exe was not found`. You have to add the location of the executable to the path usually (`C:\Windows\System32`)
 
 1. Search for environment variables
 2. Click Environment Variables
@@ -224,7 +224,7 @@ Ninja is a small build system with focus on speed. Ninja aims to be an assembler
 1. Download ninja from [this](https://github.com/ninja-build/ninja/releases) link here, select ninja-win.zip
 2. Unzip the folder `ninja.exe` should appear
 3. Place the downloaded `ninja.exe` into the folder `C:\Program Files\ninja` you have to create the ninja folder and place the `.exe` in it
-4. Add the `C:\Program Files\ninja` folder to your system path this is a [tutorial](https://windowsloop.com/how-to-add-to-windows-path/).
+4. Add the `C:\Program Files\ninja` folder to your system path. Hereis a corresponding [tutorial](https://windowsloop.com/how-to-add-to-windows-path/).
 
 ### 7. Install STLink USB drivers
 
@@ -239,7 +239,7 @@ If it won't work open the VSCode Console and enter
 ```code
 stlinkupgrade
 ```
-It should open a window if it's the case go through step 4. and execute it
+It should open a window if it's the case go directly to step 4. and execute it
 
 You should now be ready to proceed ;). It's recommended to directly jump [here](#build-stm32-project) to start a project.
 
@@ -247,7 +247,6 @@ You should now be ready to proceed ;). It's recommended to directly jump [here](
 
 ### Linux STM32 Setup
 
-Install VSCode similar to the Windows installation
 > **Important**: using your operating systems default package manager, snap/flatpack vversions may break.
 
 ### 1. Install VSCode IDE Linux
@@ -322,15 +321,18 @@ Now you should be able to develop STM32 applications visit this link [here](#bui
 
 ### Build STM32 Project
 
+Now we create the first STM32 Project it isn't difficult but can be a bit tricky
+
 ### 1. Generate Project
 
-1. Open STMCubeMX deskto application
+1. Open STMCubeMX desktop application
 2. Click on start my project from ST Board
 3. Select the corresponding ST Board
 4. A new panel launches where you will see the Pinout Configuration
 5. Navigate to Project Manager and give the project a name
 6. Define the Toolchain/IDE `CMake`
 7. Select the default Compiler/Linker `GCC`
+8. Generate the code usually in the top right corner
 
 ### 2. Flash the chip
 
@@ -344,7 +346,7 @@ Now you should be able to develop STM32 applications visit this link [here](#bui
 
 ## LaTeX setup in VSCode
 
-You should have installed VSCode for your operating system if this is not the case please visit [Windows Setup](#1-install-vscode-ide-windows), [Linux](#1-install-vscode-ide-linux)
+You should have installed VSCode for your operating system if this is not the case please visit [Windows Setup](#1-install-vscode-ide-windows), [Linux Setup](#1-install-vscode-ide-linux)
 
 ### Windows LaTeX setup
 1. Visit following [page](https://tug.org/texlive/windows.html)
@@ -363,6 +365,8 @@ sudo apt update
 sudo apt install texlive-full
 ```
 
+Porbably you need to accept some stuff
+
 The section below will explain VSCode installation
 
 ### VSCode setup
@@ -373,7 +377,7 @@ To setup LaTex in VSCode follow these points
 2. Press the green install button a redirection window will pop up select accept VSCode will open
 3. Install the LaTeX Workshop extension
 
-<span style="color:red">Masiar or Jonathan how to change the out dir for aux files</span>
+<span style="color:red">how to change the out dir for aux files</span>
 
 To test your LaTeX setup please clone a LaTeX and look if it works below there are some useful links if you never written latex
 
