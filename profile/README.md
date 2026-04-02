@@ -308,7 +308,10 @@ Finally you've setup all the required software the only step is to install ST-Li
 
 1. Open VSCode navigate to the left side bar
 2. Select the butterfly aka STM32 extension
-3. Click through the STM32CUBE KEY ACTIONS, STM32CubeMX, STMCUFinder and create empty project should work
+3. Click through the STM32CUBE KEY ACTIONS following points should work
+    - STMCubeMX
+    - STMCuFinder
+    - Create empyt porject
 4. Connect the STM32 Developmentboard via USB with your device
 5. Below the KEY Actions are the STM32CUBE RESOURCES important is Install STLink USB drivers sometimes also called udev rules click on it
 6. A window will pop up in the bottom right corner install it
