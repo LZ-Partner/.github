@@ -153,7 +153,7 @@ We use [VSCode](https://code.visualstudio.com/) for STM32 development. This chap
 
 ### Windows STM32 Setup
 
-### 1. Install IDE
+### 1. Install VSCode IDE
 Install VSCode using [this](https://code.visualstudio.com/) link
 - Select Windows Installation and download it
 - The Setup Wizzard window will open use defualt settings and accept license agreements continue until installation starts
@@ -206,7 +206,7 @@ CMake is an open-source build system generator for software projects. If you wan
 
 
 
-### 5. System environment variables (Optional but to be safe)
+### 5. System environment variables (Optional but recommended)
 This is optional but to be safe sometimes `Build fails because cmd.exe was not found`. You have to add the location of the executable to the path usually (`C:\Windows\System32`)
 
 1. Search for environment variables
@@ -214,7 +214,7 @@ This is optional but to be safe sometimes `Build fails because cmd.exe was not f
 3. Select the "Path" system variable and click edit:
 4. Click "New" and add the `C:\Windows\System32` path and click OK
 
-### 6. Install Ninja (Optional but to be safe)
+### 6. Install Ninja (Optional but recommended)
 Ninja is a small build system with focus on speed. Ninja aims to be an assembler and builds projects fast but read more if interested [here](https://ninja-build.org/)
 
 1. Download ninja from [this](https://github.com/ninja-build/ninja/releases) link here, select ninja-win.zip
@@ -224,7 +224,7 @@ Ninja is a small build system with focus on speed. Ninja aims to be an assembler
 
 ### 7. Install STLink USB drivers
 
-Finally you've setup all the stuff now you only need to install the STLink USB drivers and should be able to start
+Finally you've setup all the required software the only step is to install ST-Link drivers
 
 1. Open the STM32 extension in the left bar
 2. Plug in your STM32Board
@@ -235,60 +235,11 @@ If it won't work open the VSCode Console and enter
 ```code
 stlinkupgrade
 ```
-It should open a window if its the case go through step 4. and execute it
+It should open a window if it's the case go through step 4. and execute it
 
-Now you should be ready to go ;)
+Now you should be ready to go ;) you can directly jump [here](#build-stm32-project) to begin a project
 
-### 8. Generate Project
-
-1. Open STMCubeMX deskto application
-2. Click on start my project from ST Board
-3. Select the corresponding ST Board
-4. A new panel launches wehre you will see the Pinout Configuration
-5. Navigate to Project Manager and give the project a name
-6. Define the Toolchain/IDE `CMake`
-7. Select the default Compiler/Linker `GCC`
-
-### 9. Flash the chip
-
-1. In the bottom left corner of VSCode there should exist a build button. Press it the project should build
-2. Now open the debuger extension and run the file if there opens a pop up select `STM32Cube: Launch ST-Link GDB Server`
-3. Perhaps you have to build a json run file
-4. Run the project from the left bar, it will stop at `HAL_Init()`, press `F5` or continue button this is the blue arrow
-
-<!--
-<img src="images/stmExtensionPanel.png" alt="Extension Tab" width="25%">
-
-Check if the most important tabs work by clicking through the extension panel, if everything launches you're fine. Following Key Actions should run:
-
-- STM32CubeMX
-- STMCUFinder
-- Create empty project
-
-Check if **ST-LINK firmware upgrades are required**: This is the case if the debugger on the development board is to old. You'll find it out if following error messages pup up
-
-```
-Could not find the task 'Build'
-```
-
-or
-
-```
-Unable to start debugging
-```
-
-To upgrade the firmware do the following:
-- Plug in your board
-- In VSCode, open the STM32 extension tab
-- Under the Debug panel there is a tab where STM32 FAULT STATUS REGISTERS ... there should be a place to select "STMLink upgrade"
-- Wait for updates to complete
-
-If it still won't work enter the following command
-
-```bash
-stlinkupgrade
-```
--->
+---
 
 ### Linux STM32 Setup
 
@@ -324,25 +275,23 @@ Plugins should be installed.
 Following three STM32 Applications have to be installed. Here are the default paths for each STM32 application
 
  - [CubeCLT](https://www.st.com/en/development-tools/stm32cubeclt.html): ```/opt/st/```
- - [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html): ```/usr/local/...```
+ - [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html): ```/usr/local/STM...```
  - [MCUFinder](https://www.st.com/en/development-tools/st-mcu-finder-pc.html): ```/usr/local/STM...```
 
-Example of unzip to a folder
+For all three applications repeat the process it should be similar or equal
 
-```$ unzip en.stm32cubemx-lin-v6-12-0.zip -d cubemx```
+1. Visit the Webpage of [CubeCLT](https://www.st.com/en/development-tools/stm32cubeclt.html)
+2. Navigate to download section and select if possible your Linux distro else select generic
+3. After Download is completed open terminal and `cd Downloads`
+4. Follow the steps below
 
-Make the contained script **executable**:
 ```bash
-> cd cubemx
-> chmod +x SetupSTM32CubeMX-6.12.0
-> sudo ./SetupSTM32CubeMX-6.12.0
+unzip DOWNLOADED_FOLDER.zip -d cubeclt #-d flag will create a new folder wehre the files from unzip land
+cd cubeclt #you change directory into the new created wehre the files are located
+sudo ./installCubeClt #you will start the installation using their shellscript
 ```
-
-If the script is not executed under sudo it may not correctly install all drivers and rules. During the installation prompts **install all additional components** (such as the st-link debug server). Importantly, **note the installation directory** for everything you install.
-
-After installation the process is similar to windows read the following chapter [Setup STM32 for developing](#setup-stm32-for-developing)
-
-Finally Install ncurses via apt:
+5. A window will pop up default values should be ok please pay attention that the file paths are similar to the above file paths
+6. Finally Install ncurses via apt
 ```bash 
 sudo apt update
 sudo apt-get install libncurses5
@@ -350,26 +299,39 @@ sudo apt-get install libncurses5
 
 The latest versions of ubuntu do not contain libncurses5 in their repositories anymore To install it manually, see [here](https://gist.github.com/schilkp/8fcab720fffc11cb0034010c1dc05404)
 
-### Bugs and nice to know
+### 4. Check the installation
+Finally you've setup all the required software the only step is to install ST-Link drivers
 
-- **Build fails because cmd.exe was not found** The windows command line could not be found by the build tools add it to the system path environment variable [Tutorial](https://www.thewindowsclub.com/how-to-add-edit-a-path-variable-in-windows) add the following path into the system environment variables ```C:\Windows\System32```
-- **Bad CMake executable**. Check to make sure it is installed if not install CMake and Ninja
-  1. Install [CMake](https://cmake.org/download/) installer and run it. Make sure to, when prompted, add CMake to the path of the current user. **This is not the default option**.
-  2. Install the [Ninja](https://github.com/ninja-build/ninja/releases) build tool executable.
-  3. Place the downloaded ```ninja.exe``` into the folder ```C:\Program Files\ninja```
-  4. Add the ```C:\Program Files\ninja``` to your system path.
-  5. Close and re-open VSCode
+1. Open VSCode navigate to the left side bar
+2. Select the butterfly aka STM32 extension
+3. Click through the STM32CUBE KEY ACTIONS, STM32CubeMX, STMCUFinder and create empty project should work
+4. Connect the STM32 Developmentboard via USB with your device
+5. Below the KEY Actions are the STM32CUBE RESOURCES important is Install STLink USB drivers sometimes also called udev rules click on it
+6. A window will pop up in the bottom right corner install it
 
+Now you should be able to develop STM32 applications
+
+---
 
 ### Build STM32 Project
 
-Start STM32CubeMX select New Project either select start project from MCU or Start My Project from ST Board. After you've selected the board navigate to ```Project Manager``` and at the point where you have to select the ```Toolchain / IDE``` select CMake and the default ```Compiler/Linker``` GCC. Then Generate Code.
+### 1. Generate Project
 
-**Important the project name has to be the same name as the toolchain location folder**
+1. Open STMCubeMX deskto application
+2. Click on start my project from ST Board
+3. Select the corresponding ST Board
+4. A new panel launches wehre you will see the Pinout Configuration
+5. Navigate to Project Manager and give the project a name
+6. Define the Toolchain/IDE `CMake`
+7. Select the default Compiler/Linker `GCC`
 
-After your code is generated please open it with VSCode if you want to build it there is an icon in the bottom left corner to build the project. After the Build process finished please go to the Debug Section and run the project. Often you have to select the STM32STLink_GDB_Server to flash the STM32 MCU Board
+### 2. Flash the chip
 
-[Here](https://community.st.com/t5/stm32-mcus/how-to-use-vs-code-with-stm32-microcontrollers/ta-p/742589) more details and a tutorial to Setup the Development environment.
+1. In the bottom left corner of VSCode there should exist a build button. Press it the project should build
+2. Now open the debuger extension and run the file if there opens a pop up select `STM32Cube: Launch ST-Link GDB Server`
+3. Perhaps you have to build a json run file
+4. Run the project from the left bar, it will stop at `HAL_Init()`, press `F5` or continue button this is the blue arrow
+
 
 ---
 
