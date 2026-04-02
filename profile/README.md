@@ -15,6 +15,7 @@ Detailed rules (naming, versioning, repository structure) are defined separately
 - [STM32 development environment setup](#stm32-development-environment-setup)
   - [Windows Setup](#windows-stm32-setup)
   - [Linux Setup](#linux-stm32-setup)
+  - [Build STM32 Project](#build-stm32-project)
 - [Latex setup in VSCode](#latex-setup-in-vscode)
 - [Kicad setup](#kicad-setup)
   - [Windows setup](#windows-kicad-setup)
@@ -153,7 +154,7 @@ We use [VSCode](https://code.visualstudio.com/) for STM32 development. This chap
 
 ### Windows STM32 Setup
 
-### 1. Install VSCode IDE
+### 1. Install VSCode IDE Windows
 Install VSCode using [this](https://code.visualstudio.com/) link
 - Select Windows Installation and download it
 - The Setup Wizzard window will open use defualt settings and accept license agreements continue until installation starts
@@ -246,7 +247,7 @@ Now you should be ready to go ;) you can directly jump [here](#build-stm32-proje
 Install VSCode similar to the Windows installation
 > **Important**: using your operating systems default package manager, snap/flatpack vversions may break.
 
-### 1. Setup VSCode
+### 1. Install VSCode IDE Linux
 Open the terminal and enter following commands
 ```
 sudo apt update
@@ -309,7 +310,7 @@ Finally you've setup all the required software the only step is to install ST-Li
 5. Below the KEY Actions are the STM32CUBE RESOURCES important is Install STLink USB drivers sometimes also called udev rules click on it
 6. A window will pop up in the bottom right corner install it
 
-Now you should be able to develop STM32 applications
+Now you should be able to develop STM32 applications visit this link [here](#build-stm32-project)
 
 ---
 
@@ -337,23 +338,30 @@ Now you should be able to develop STM32 applications
 
 ## LaTeX setup in VSCode
 
-To setup LaTeX for windows one needs to have TeX Live on Windows to install that use the following link and select a method to install it [TexLive Download](https://tug.org/texlive/windows.html). The installation may take some time depending on your laptop up to 3h.
+You should have installed VSCode for your operating system if this is not the case please visit [Windows Setup](#1-install-vscode-ide-windows), [Linux](#1-install-vscode-ide-linux)
 
-In VSCode i recommend following extension from the extension manager with the following Extension-id:
-- James-Yu.latex-workshop [To the Extension](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
+### Windows LaTeX setup
+1. Visit following [page](https://tug.org/texlive/windows.html)
+2. Select the easy installer and download the `.exe`
+3. Launch the `.exe` default options should be fine click through it
+4. Wait it may take very long we hade installation times up to 3h
 
-After you've setup all this you should see a build or compile symbol in the bottom left corner of your active VSCode session. To have a nice view on your latex project please open the report file and place it on the right hand side of your monitor.
+The basics are done jump to the following section [VSCode setup](#vscode-setup)
 
-### Install TexLive on Linux
+### Linux LaTex setup
 
-To install TexLive on Linux use the following command:
+You only need to install TexLive! Open the terminal and enter following commands 
 
 ```bash
 sudo apt update
 sudo apt install texlive-full
 ```
 
-The rest should be similar to windows
+The section below will explain VSCode installation
+
+### VSCode setup
+
+
 
 ---
 
