@@ -6,7 +6,7 @@ LZ & Partner GitHub organization.
 The goal is to get new developers productive quickly.
 Detailed rules (naming, versioning, repository structure) are defined separately.
 
-## Table of Contents
+## Table of contents
 
 - [Organization and Rules](#organization-and-rules)
   - [Organizational Structure](#organizational-structure)
@@ -17,9 +17,12 @@ Detailed rules (naming, versioning, repository structure) are defined separately
   - [Linux Setup](#linux-stm32-setup)
   - [Build STM32 Project](#build-stm32-project)
 - [Latex setup in VSCode](#latex-setup-in-vscode)
+  - [Windows VSCode setup](#windows-latex-setup)
+  - [Linux VSCode setup](#linux-latex-setup)
 - [Kicad setup](#kicad-setup)
   - [Windows setup](#windows-kicad-setup)
   - [Linux setup](#linux-kicad-setup)
+- [How to edit this document](#how-to-edit-this-document)
 - [Commit Regeln und konventionen](#commit-regeln-und-konventionen)
 - [Troubleshooting](#troubleshooting)
 
@@ -348,7 +351,7 @@ You should have installed VSCode for your operating system if this is not the ca
 
 The basics are done jump to the following section [VSCode setup](#vscode-setup)
 
-### Linux LaTex setup
+### Linux LaTeX setup
 
 You only need to install TexLive! Open the terminal and enter following commands 
 
@@ -419,6 +422,15 @@ Now it asks:
 - If you are sure to install it, either press y or j depending on your local language settings
 
 Installations should be finished
+
+---
+
+## How to edit this document
+- If you've found an error typo or don't agree with a guide written by the team please create a new branch and write changes into it.
+- To add a new tutorial please use a Title i.e. KiCad setup then add a windows paragraph and if possible later the linux setup
+    - Style guide Title: `Programname Setup` Subsections are always `Windows Programname Setup` and `Linux Programname Setup`
+    - Please provide a point to point instruction i.e. first do this then do this use numbers
+- This document is written in markdown if you're not familiar with it please read a bit about it on [this](https://www.markdownguide.org/cheat-sheet/) page.
 
 ---
 
