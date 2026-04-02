@@ -361,8 +361,18 @@ The section below will explain VSCode installation
 
 ### VSCode setup
 
+To setup LaTex in VSCode follow these points
 
+1. Follow [this](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) Link
+2. Press the green install button a redirection window will pop up select accept VSCode will open
+3. Install the LaTeX Workshop extension
 
+<span style="color:red">Masiar or Jonathan how to change the out dir for aux files</span>
+
+To test your LaTeX setup please clone a LaTeX and look if it works below there are some useful links if you never written latex
+
+- [LaTeX Tutorial](https://www.overleaf.com/learn)
+- [TeX Documentation](https://tug.org/begin.html)
 ---
 
 ## KiCad Setup
