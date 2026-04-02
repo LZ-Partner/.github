@@ -55,13 +55,13 @@ SSH-Keys are used to securely authenticate with GitHub without using a password.
 
 ### 1. Generate the Key
 
-To generate a new SSH-key open your terminal/cmd and use the following command to generate it. this is the default option with no additional information stored in it for more information read [this](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+To generate a new SSH-key open your terminal/cmd and use the following command to generate it. This is the default option with no additional metadata, for more information read [this](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
 ```
 ssh-keygen
 ```
 Now you have to select
--  File to store it in (default works except you want multi setup)
--  Passphrase either no or with passphrase the [link](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) provides additional information
+-  File to store it in (default works unless you want multiple setups)
+-  Passphrase either leave it empty or set a passpharse the [link](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) provides additional information
 
 ### 2. Find and copy the key
 Default locations:
@@ -131,12 +131,12 @@ Configure your global Git identity (required for commits):
     Verify configuration: `git config --list`
 4. For a prettier Git in the Powershell terminal:)
     ```powershell
-    Import-Module posh-git> Install-Module posh-git -Scope CurrentUser -Force
+    Install-Module posh-git -Scope CurrentUser -Force
     Import-Module posh-git
     Add-PoshGitToProfile -AllHosts
     ```
 
-    Now we add helpful extensions which indicate what is commited and what is ready to get pushed as well addistionally it shows the number of untracked files.
+    Now we add helpful extensions which indicate what is commited and what is ready to get pushed as well additionally it shows the number of untracked files.
     ```powershell
     C:\Users\username\path\to\git\directory [main ≡ +1 ~1 -0 !]>
     ```    
@@ -150,21 +150,21 @@ Configure your global Git identity (required for commits):
 
 ## STM32 development environment setup
 
-We use [VSCode](https://code.visualstudio.com/) for STM32 development. This chapter is very demanding and the setup process isn't trivial. First we guide you throug windows installation and setup process aftwerwards follows linux. Everything except VSCode (used for documentation) was uninstalled to write this guide. 
+We use [VSCode](https://code.visualstudio.com/) for STM32 development. This chapter is very demanding and the setup process isn't trivial. First we guide you through the Windows installation and setup process afterwards follows, linux follows. All tools except VSCode (used for documentation) were uninstalled to ensure a celan setup for this guide. 
 
 ### Windows STM32 Setup
 
 ### 1. Install VSCode IDE Windows
 Install VSCode using [this](https://code.visualstudio.com/) link
 - Select Windows Installation and download it
-- The Setup Wizzard window will open use defualt settings and accept license agreements continue until installation starts
-- Boot VSCode
+- The Setup Wizard window will open use default settings and accept license agreements continue until installation starts
+- Launch VSCode
 
-Here a [Video Tutorial](https://www.youtube.com/watch?v=f8_uF_IDV50) about basic funcionalities of VSCode
+Here a [Video Tutorial](https://www.youtube.com/watch?v=f8_uF_IDV50) about basic functionalities of VSCode
 
 ### 2. Install VSCode Plugins
  
-Following VSCode extensions are required, here [this](https://marketplace.visualstudio.com/VSCode) link redirects you to the market place wehre you can find extensions
+Following VSCode extensions are required, here [this](https://marketplace.visualstudio.com/VSCode) link redirects you to the market place where you can find extensions
 
 - STMicroelectronics.stm32-vscode-extension
 - ms-vscode.vscode-serial-monitor
@@ -174,17 +174,17 @@ Are the important extensions to setup
 1. Visit the two links [STM-VSCode extension](https://marketplace.visualstudio.com/items?itemName=stmicroelectronics.stm32-vscode-extension), [SerialMonitor extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-serial-monitor)
 2. Press the install button
 3. A pop up will spawn, open in VSCode accept
-4. Now VSCode should open, install the according plugin
+4. Now VSCode should open, install the corresponding plugin
 
 Plugins should be installed.
 
 ### 3. Install the STM32 Applications
 
-The following three Applications are important
+The following three applications are important
 
 - [CubeClt](https://www.st.com/en/development-tools/stm32cubeclt.html) is a bundle of toolchain components. During installation use default settings and **do not change the installation location**.
-- [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html#) is a graphical project configurator. As well use default settings and **do not change the installation location**.
-- [MCUFinder](https://www.st.com/en/development-tools/st-mcu-finder-pc.html) is a graphical tool to select an ST device. Again use default settings and **do not change the installation location**.
+- [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html#) is a graphical project configurator. Again, use the default settings and **do not change the installation location**.
+- [MCUFinder](https://www.st.com/en/development-tools/st-mcu-finder-pc.html) is a graphical tool to select an ST device. Again, use default settings and **do not change the installation location**.
 
 For all three repeat the process described below
 
@@ -197,7 +197,7 @@ For all three repeat the process described below
 7. Default settings are good you don't need to change something press continue or next the whole time until installation process starts finally finish the process
 
 ### 4. Install Cmake
-CMake is an open-source build system generator for software projects. If you want more information about CMake visit [this](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Why%20CMake.html) Link. We'll guide you through the installation process.
+CMake is an open-source build system generator for software projects. If you want more information about CMake visit [this](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Why%20CMake.html) Link. The Section will guide you through the installation process.
 
 1. Visit [this](https://cmake.org/download/) link to download
 2. Press on the green download button in the top right 
@@ -219,7 +219,7 @@ This is optional but to be safe sometimes `Build fails because cmd.exe was not f
 Ninja is a small build system with focus on speed. Ninja aims to be an assembler and builds projects fast but read more if interested [here](https://ninja-build.org/)
 
 1. Download ninja from [this](https://github.com/ninja-build/ninja/releases) link here, select ninja-win.zip
-2. Unzip the folder `ninja.exe` should spawn
+2. Unzip the folder `ninja.exe` should appear
 3. Place the downloaded `ninja.exe` into the folder `C:\Program Files\ninja` you have to create the ninja folder and place the `.exe` in it
 4. Add the `C:\Program Files\ninja` folder to your system path this is a [tutorial](https://windowsloop.com/how-to-add-to-windows-path/).
 
@@ -238,7 +238,7 @@ stlinkupgrade
 ```
 It should open a window if it's the case go through step 4. and execute it
 
-Now you should be ready to go ;) you can directly jump [here](#build-stm32-project) to begin a project
+You should now be ready to proceed ;). It's recommended to directly jump [here](#build-stm32-project) to start a project.
 
 ---
 
@@ -257,7 +257,7 @@ Now VSCode should be installed
 
 ### 2. Install VSCode Plugins
  
-Following VSCode extensions are required, here [this](https://marketplace.visualstudio.com/VSCode) link redirects you to the market place wehre you can find extensions
+Following VSCode extensions are required, here [this](https://marketplace.visualstudio.com/VSCode) link redirects you to the market place where you can find extensions
 
 - STMicroelectronics.stm32-vscode-extension
 - ms-vscode.vscode-serial-monitor
@@ -279,7 +279,7 @@ Following three STM32 Applications have to be installed. Here are the default pa
  - [CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html): ```/usr/local/STM...```
  - [MCUFinder](https://www.st.com/en/development-tools/st-mcu-finder-pc.html): ```/usr/local/STM...```
 
-For all three applications repeat the process it should be similar or equal
+For all three applications repeat the process the process is similar
 
 1. Visit the Webpage of [CubeCLT](https://www.st.com/en/development-tools/stm32cubeclt.html)
 2. Navigate to download section and select if possible your Linux distro else select generic
@@ -287,8 +287,8 @@ For all three applications repeat the process it should be similar or equal
 4. Follow the steps below
 
 ```bash
-unzip DOWNLOADED_FOLDER.zip -d cubeclt #-d flag will create a new folder wehre the files from unzip land
-cd cubeclt #you change directory into the new created wehre the files are located
+unzip DOWNLOADED_FOLDER.zip -d cubeclt #-d flag will create a new folder where the files from unzip land
+cd cubeclt #you change directory into the new created where the files are located
 sudo ./installCubeClt #you will start the installation using their shellscript
 ```
 5. A window will pop up default values should be ok please pay attention that the file paths are similar to the above file paths
@@ -321,7 +321,7 @@ Now you should be able to develop STM32 applications visit this link [here](#bui
 1. Open STMCubeMX deskto application
 2. Click on start my project from ST Board
 3. Select the corresponding ST Board
-4. A new panel launches wehre you will see the Pinout Configuration
+4. A new panel launches where you will see the Pinout Configuration
 5. Navigate to Project Manager and give the project a name
 6. Define the Toolchain/IDE `CMake`
 7. Select the default Compiler/Linker `GCC`
@@ -329,7 +329,7 @@ Now you should be able to develop STM32 applications visit this link [here](#bui
 ### 2. Flash the chip
 
 1. In the bottom left corner of VSCode there should exist a build button. Press it the project should build
-2. Now open the debuger extension and run the file if there opens a pop up select `STM32Cube: Launch ST-Link GDB Server`
+2. Now open the debugger extension and run the file if a pop-up appears select `STM32Cube: Launch ST-Link GDB Server`
 3. Perhaps you have to build a json run file
 4. Run the project from the left bar, it will stop at `HAL_Init()`, press `F5` or continue button this is the blue arrow
 
@@ -344,7 +344,7 @@ You should have installed VSCode for your operating system if this is not the ca
 1. Visit following [page](https://tug.org/texlive/windows.html)
 2. Select the easy installer and download the `.exe`
 3. Launch the `.exe` default options should be fine click through it
-4. Wait it may take very long we hade installation times up to 3h
+4. Wait installation may take up to 3 hours and more depending on your device
 
 The basics are done jump to the following section [VSCode setup](#vscode-setup)
 
@@ -381,7 +381,7 @@ KiCad is a free and open source software which is widely used to design electric
 
 ### Windows KiCad Setup
 
-To install KiCad on Windows simply navigate to [this](https://www.kicad.org/download/) page and select your operating system in our case Windows. You will get redirected to a page wehre Windows Downloads are available. Choose the latest stable release and your region i.e. Europe/Cern-Switzerland. Run the exe by clicking on it in the Explorer by double clicking on the ```Kicad-VERSION-Number-x86.exe``` it will open a winodw. Press continue or weiter. You now have to select following points in your installer (we recommend default settings).
+To install KiCad on Windows simply navigate to [this](https://www.kicad.org/download/) page and select your operating system in our case Windows. You will get redirected to a page where Windows Downloads are available. Choose the latest stable release and your region i.e. Europe/Cern-Switzerland. Run the exe by clicking on it in the Explorer by double clicking on the ```Kicad-VERSION-Number-x86.exe``` it will open a window. Press continue or weiter. You now have to select following points in your installer (we recommend default settings).
 
 - Local user or system wide installation
 - Select components
@@ -403,7 +403,7 @@ To install KiCad on Linux you have to visit [this](https://www.kicad.org/downloa
 - A window will Welcome... press next
 - The next windows use default options (already selected by the setup wizard) and press next
 
-KiCad should now be installed <span style="color:red">not 100% sure how to make installation persistant </span>
+KiCad should now be installed <span style="color:red">not 100% sure how to make installation persistent </span>
 
 #### Console setup
 
@@ -422,7 +422,7 @@ Installations should be finished
 
 ---
 
-## Commit Regeln und Konventionen 
+## Commit Rules and Conventions
 https://www.conventionalcommits.org/en/v1.0.0/
 Another recommendation for commits is to record commit messages at shorter intervals and after minor changes, rather than recording one commit message after many changes. You can think of this in the same way as progressing in a game:
 In certain difficult games, if this option is available, you try to save your progress at short intervals. This gives you as the player security in case your avatar dies during the game, your city is reduced to rubble, or even worse, your machine suddenly breaks down.
@@ -444,4 +444,5 @@ __Please list any problems you encounter during installation here.__
 2. Setting up and building STM32 Project:
     1. Check if all STM32 tools are installed
     2. Don't build it on **OneDrive**
-    3. cd directly in the project i.e. if you named your project Test cd directly into the project and after you're in the folder open visual studio code to compile
+    3. cd directly into the project i.e. if you named your project Test cd directly into the project and after you're in the folder open VSCode to compile
+    4. Create a launch file
